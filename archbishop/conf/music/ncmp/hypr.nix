@@ -8,10 +8,10 @@
       clockSupport = true;
       taglibSupport = true;
     };
-    mpdMusicDir = "/home/kenzo/Music/OnTheSpot/";
+    mpdMusicDir = "/home/archbishop/Music/OnTheSpot/";
     settings = {
       # Miscelaneous
-      ncmpcpp_directory = "/home/kenzo/.config/ncmpcpp";
+      ncmpcpp_directory = "/home/archbishop/.config/ncmpcpp";
       ignore_leading_the = true;
       external_editor = "nvim";
       message_delay_time = 1;

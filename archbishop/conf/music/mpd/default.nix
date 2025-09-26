@@ -3,8 +3,8 @@
 {
   services.mpd = {
     enable = true;
-    musicDirectory = "/home/kenzo/Music/OnTheSpot/";
-    dataDir = "/home/kenzo/.config/mpd";
+    musicDirectory = "/home/archbishop/Music/OnTheSpot/";
+    dataDir = "/home/archbishop/.config/mpd";
     extraConfig = ''
       auto_update           "yes"
       restore_paused        "yes"

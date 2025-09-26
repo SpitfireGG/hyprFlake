@@ -55,12 +55,11 @@ pkgs.stdenv.mkDerivation {
 
   #  got an error regarding version, (module version is needed, so tried patching it with different version, [ used the qt5 for it] , solved the version issue)
   # Patch Components/*.qml files to ensure Qt6 compatibility
-  /*
-    substituteInPlace $out/share/sddm/themes/sddm-astronaut-theme/Main.qml \
-    --replace "import QtQuick 2.15" "import QtQuick 2.11" \
-    --replace "import QtQuick.Layouts 1.15" "import QtQuick.Layouts 1.11" \
-    --replace "import QtQuick.Controls 2.15" "import QtQuick.Controls 2.4" \
-    --replace "import QtMultimedia" "import QtMultimedia"
-    done
+  /* substituteInPlace $out/share/sddm/themes/sddm-astronaut-theme/Main.qml \
+     --replace "import QtQuick 2.15" "import QtQuick 2.11" \
+     --replace "import QtQuick.Layouts 1.15" "import QtQuick.Layouts 1.11" \
+     --replace "import QtQuick.Controls 2.15" "import QtQuick.Controls 2.4" \
+     --replace "import QtMultimedia" "import QtMultimedia"
+     done
   */
 }
