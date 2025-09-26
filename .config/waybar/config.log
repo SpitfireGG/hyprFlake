@@ -1,0 +1,696 @@
+{
+  // === ULTIMATE RICED WAYBAR CONFIGURATION ===
+  "layer": "top",
+  "position": "top",
+  "height": 14,
+  "margin-top": 2,
+  "margin-bottom": 0,
+  "margin-left": 4,
+  "margin-right": 4,
+  "spacing": 2,
+  "exclusive": true,
+  "gtk-layer-shell": true,
+  "passthrough": false,
+
+  // === MODULE LAYOUT ===
+  "modules-left": [
+    "custom/launcher",
+    "custom/separator#line",
+    "hyprland/workspaces",
+    "custom/separator#dot",
+    "custom/playerctl",
+    "custom/playerlabel",
+  ],
+
+  "modules-center": [
+    "custom/separator#dot",
+    "clock",
+    "custom/separator#dot",
+    "custom/notification",
+  ],
+
+  "modules-right": [
+    "custom/system_stats",
+    "custom/separator#dot",
+    "custom/gaming_mode",
+    "custom/keyboard_toggle",
+    "custom/separator#line",
+    "backlight",
+    "pulseaudio",
+    "network",
+    "battery",
+    "custom/separator#line",
+    "tray",
+    "custom/power",
+  ],
+
+  // === LEFT MODULES ===
+  "custom/launcher": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "~/.config/rofi/launchers/type-5/launcher.sh",
+  },
+
+  "hyprland/workspaces": {
+    "disable-scroll": false,
+    "all-outputs": true,
+    "on-click": "activate",
+    "persistent_workspaces": {
+      "*": 10,
+    },
+    "on-scroll-up": "hyprctl dispatch workspace e-1",
+    "on-scroll-down": "hyprctl dispatch workspace e+1",
+    "format": "{icon}",
+    "format-icons": {
+      "1": " ",
+      "2": " ",
+      "3": " ",
+      "4": " ",
+      "5": " ",
+      "6": " ",
+      "7": " ",
+      "8": " ",
+      "9": " ",
+      "10": " ",
+      "focused": "●",
+      "default": "○",
+      "empty": "◌",
+    },
+  },
+
+  "custom/playerctl": {
+    "format": "{icon}",
+    "return-type": "json",
+    "max-length": 64,
+    // IMPORTANT: Removed the <span color='...'> tags, styling is now done in SCSS via 'class'
+    "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+    "on-click-middle": "playerctl play-pause",
+    "on-click": "playerctl previous",
+    "on-click-right": "playerctl next",
+    "format-icons": {
+      "Playing": "󰐊", // Nerd Font Play
+      "Paused": "󰏤", // Nerd Font Pause
+      "Stopped": "󰓛", // Nerd Font Stop
+    },
+  },
+
+  "custom/playerlabel": {
+    "format": "<span>{}</span>",
+    "return-type": "json",
+    "max-length": 50, // Keep it reasonably short
+    "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+    "on-click-middle": "playerctl play-pause",
+    "on-click": "playerctl previous",
+    "on-click-right": "playerctl next",
+    "escape": true,
+  },
+
+  // === CENTER MODULES ===
+  "custom/weather": {
+    "format": "{}",
+    "tooltip": true,
+    "interval": 1800,
+    "exec": "$HOME/.config/waybar/scripts/weather.sh",
+    "return-type": "json",
+  },
+
+  "clock": {
+    "interval": 1,
+    "format": "{:%H:%M:%S}",
+    "format-alt": "{:%A, %B %d, %Y}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "on-click-right": "mode",
+      "format": {
+        "months": "<span color='#7aa2f7'><b>{}</b></span>",
+        "days": "<span color='#c0caf5'><b>{}</b></span>",
+        "weeks": "<span color='#7dcfff'><b>W{}</b></span>",
+        "weekdays": "<span color='#bb9af7'><b>{}</b></span>",
+        "today": "<span color='#f7768e'><b><u>{}</u></b></span>",
+      },
+    },
+  },
+
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "<span foreground='#f7768e'>󰂚</span>",
+      "none": "󰂜",
+      "dnd-notification": "<span foreground='#f7768e'>󰂛</span>",
+      "dnd-none": "󰪑",
+      "inhibited-notification": "<span foreground='#f7768e'>󰂚</span>",
+      "inhibited-none": "󰂜",
+      "dnd-inhibited-notification": "<span foreground='#f7768e'>󰂛</span>",
+      "dnd-inhibited-none": "󰪑",
+    },
+    "escape": true,
+  },
+
+  // === RIGHT MODULES ===
+  "custom/system_stats": {
+    "exec": "$HOME/.config/waybar/scripts/system_stats.sh",
+    "format": "{}",
+    "interval": 3,
+    "return-type": "json",
+  },
+
+  "custom/gaming_mode": {
+    "format": "🎮",
+    "exec": "$HOME/.config/waybar/scripts/gaming_status.sh",
+    "on-click": "$HOME/.config/waybar/scripts/gaming_enable.sh && pkill -RTMIN+8 waybar",
+    "on-click-right": "$HOME/.config/waybar/scripts/gaming_disable.sh && pkill -RTMIN+8 waybar",
+    "interval": "once",
+    "signal": 8,
+  },
+
+  "custom/keyboard_toggle": {
+    "format": "{}",
+    "exec": "$HOME/.config/waybar/scripts/keyboard_toggle.sh",
+    "on-click": "$HOME/.config/waybar/scripts/keyboard_toggle.sh && pkill -RTMIN+9 waybar",
+    "interval": "once",
+    "signal": 9,
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon} {percent}%",
+    "format-icons": ["󰃞", "󰃟", "󰃠"],
+    "on-scroll-up": "brightnessctl s 2%+ && pkill -RTMIN+2 waybar",
+    "on-scroll-down": "brightnessctl s 2%- && pkill -RTMIN+2 waybar",
+    "smooth-scrolling-threshold": 1,
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰖁 Muted",
+    "on-click": "pavucontrol",
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
+    "scroll-step": 2,
+    "format-icons": {
+      "headphone": "󰋋",
+      "hands-free": "󰋎",
+      "headset": "󰋎",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["󰕿", "󰖀", "󰕾"],
+    },
+    "smooth-scrolling-threshold": 1,
+  },
+
+  "network": {
+    "format-wifi": "󰤨 {essid}",
+    "format-ethernet": "󰈀 Wired",
+    "format-linked": "󰤭 {ifname} (No IP)",
+    "format-disconnected": "󰤮 Disconnected",
+    "tooltip-format": "{ifname} via {gwaddr}",
+    "tooltip-format-wifi": "󰤨 {essid} ({signalStrength}%)\n󰩟 {ipaddr}/{cidr}\n󰞒 {frequency} MHz",
+    "tooltip-format-ethernet": "󰈀 {ifname}\n󰩟 {ipaddr}/{cidr}",
+    "on-click": "nm-connection-editor",
+  },
+
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20,
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󰚥 {capacity}%",
+    "format-alt": "{time} {icon}",
+    "format-icons": ["󰂃", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+  },
+
+  "tray": {
+    "icon-size": 18,
+    "spacing": 8,
+  },
+
+  "custom/power": {
+    "format": "⏻",
+    "tooltip": false,
+    "on-click": "wlogout -p layer-shell",
+  },
+
+  // === SEPARATORS ===
+  "custom/separator#dot": {
+    "format": "•",
+    "tooltip": false,
+  },
+
+  "custom/separator#line": {
+    "format": "|",
+    "tooltip": false,
+  },
+}
+/* === ULTIMATE RICED WAYBAR STYLESHEET === */
+
+/* === GLOBAL SETTINGS === */
+* {
+  border: none;
+  border-radius: 0;
+  font-family:
+    "CommitMono Nerd Font", "Iosevka Nerd Font", "JetBrainsMono Nerd Font",
+    monospace;
+  font-size: 12px;
+  font-weight: 600;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* === MAIN BAR === */
+window#waybar {
+  background: linear-gradient(
+    135deg,
+    rgba(26, 27, 38, 0.95) 0%,
+    rgba(30, 31, 44, 0.95) 50%,
+    rgba(26, 27, 38, 0.95) 100%
+  );
+  border: 2px solid rgba(125, 207, 255, 0.3);
+  border-radius: 16px;
+}
+
+window#waybar:hover {
+  border-color: rgba(125, 207, 255, 0.6);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(125, 207, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* === TOOLTIP === */
+tooltip {
+  background: linear-gradient(
+    135deg,
+    rgba(30, 31, 44, 0.95),
+    rgba(26, 27, 38, 0.95)
+  );
+  border: 1px solid rgba(125, 207, 255, 0.4);
+  border-radius: 12px;
+  color: #c0caf5;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  padding: 8px;
+  font-size: 12px;
+}
+
+/* === MODULE BASE STYLES === */
+.modules-left,
+.modules-center,
+.modules-right {
+  background: transparent;
+  margin: 0;
+  padding: 2px 12px;
+}
+
+.modules-left {
+  border-radius: 16px 4px 4px 16px;
+}
+
+.modules-center {
+  border-radius: 4px;
+}
+
+.modules-right {
+  border-radius: 4px 16px 16px 4px;
+}
+
+/* === INDIVIDUAL MODULE STYLING === */
+#workspaces,
+#clock,
+#custom-launcher,
+#custom-playerctl,
+#custom-weather,
+#custom-notification,
+#custom-system_stats,
+#custom-gaming_mode,
+#custom-keyboard_toggle,
+#backlight,
+#pulseaudio,
+#network,
+#battery,
+#tray,
+#custom-power {
+  background: linear-gradient(
+    145deg,
+    rgba(54, 54, 70, 0.4) 0%,
+    rgba(46, 47, 64, 0.4) 100%
+  );
+  border: 1px solid rgba(125, 207, 255, 0.2);
+  border-radius: 10px;
+  color: #c0caf5;
+  margin: 2px 4px;
+  padding: 2px 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* === HOVER EFFECTS === */
+#workspaces:hover,
+#clock:hover,
+#custom-launcher:hover,
+#custom-weather:hover,
+#custom-notification:hover,
+#custom-system_stats:hover,
+#custom-gaming_mode:hover,
+#custom-keyboard_toggle:hover,
+#backlight:hover,
+#pulseaudio:hover,
+#network:hover,
+#battery:hover,
+#tray:hover,
+#custom-power:hover {
+  background: linear-gradient(
+    145deg,
+    rgba(125, 207, 255, 0.15) 0%,
+    rgba(122, 162, 247, 0.15) 100%
+  );
+  border-color: rgba(125, 207, 255, 0.6);
+  color: #7dcfff;
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.3),
+    0 0 12px rgba(125, 207, 255, 0.2);
+}
+
+/* === LAUNCHER === */
+#custom-launcher {
+  background: linear-gradient(135deg, #7aa2f7, #bb9af7);
+  border: none;
+  color: #1a1b26;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 2px 8px;
+}
+
+#custom-launcher:hover {
+  background: linear-gradient(135deg, #9ece6a, #7aa2f7);
+  box-shadow: 0 6px 20px rgba(122, 162, 247, 0.4);
+}
+
+/* === WORKSPACES === */
+#workspaces {
+  background: rgba(30, 31, 44, 0.6);
+  border: 1px solid rgba(125, 207, 255, 0.3);
+  padding: 2px 8px;
+}
+
+#workspaces button {
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  color: #565f89;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 2px 2px;
+  min-width: 24px;
+  padding: 2px 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#workspaces button:hover {
+  background: rgba(125, 207, 255, 0.2);
+  color: #7dcfff;
+}
+
+#workspaces button.active,
+#workspaces button.focused {
+  background: linear-gradient(45deg, #7aa2f7, #bb9af7);
+  color: #1a1b26;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(122, 162, 247, 0.4);
+}
+
+#workspaces button.urgent {
+  background: #f7768e;
+  color: #1a1b26;
+  animation: pulse 2s infinite;
+}
+
+/* === MEDIA PLAYER === */
+#custom-playerctl {
+  background: linear-gradient(
+    135deg,
+    rgba(158, 206, 106, 0.2),
+    rgba(122, 162, 247, 0.2)
+  );
+  padding: 2px 8px;
+  border-color: rgba(158, 206, 106, 0.4);
+  color: #9ece6a;
+}
+#custom-playerlabel {
+  /* background: linear-gradient(
+    135deg,
+    rgba(158, 206, 106, 0.2),
+    rgba(122, 162, 247, 0.2)
+  ); */
+  color: #9ecfac;
+  margin-left: 2px;
+}
+
+#custom-playerctl:hover {
+  color: #c3e88d;
+  border-color: rgba(158, 206, 106, 0.8);
+}
+
+/* === CLOCK === */
+#clock {
+  background: linear-gradient(
+    135deg,
+    rgba(125, 207, 255, 0.15),
+    rgba(187, 154, 247, 0.15)
+  );
+  border-color: rgba(125, 207, 255, 0.4);
+  color: #7dcfff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 8px;
+}
+
+#clock:hover {
+  color: #c0caf5;
+  border-color: rgba(125, 207, 255, 0.8);
+}
+
+/* === WEATHER === */
+#custom-weather {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 193, 7, 0.15),
+    rgba(255, 152, 0, 0.15)
+  );
+  border-color: rgba(255, 193, 7, 0.4);
+  color: #ff9500;
+}
+
+/* === SYSTEM STATS === */
+#custom-system_stats {
+  background: linear-gradient(
+    135deg,
+    rgba(158, 206, 106, 0.15),
+    rgba(125, 207, 255, 0.15)
+  );
+  border-color: rgba(158, 206, 106, 0.4);
+  color: #9ece6a;
+  font-family: "CommitMono Nerd Font", monospace;
+  font-size: 12px;
+}
+
+/* === GAMING MODE === */
+#custom-gaming_mode {
+  background: linear-gradient(
+    135deg,
+    rgba(247, 118, 142, 0.15),
+    rgba(255, 117, 127, 0.15)
+  );
+  border-color: rgba(247, 118, 142, 0.4);
+  color: #f7768e;
+  font-size: 12px;
+}
+
+#custom-gaming_mode.enabled {
+  background: linear-gradient(135deg, #9ece6a, #73daca);
+  border-color: #9ece6a;
+  color: #1a1b26;
+  animation: gaming-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes gaming-pulse {
+  from {
+    box-shadow: 0 0 5px rgba(158, 206, 106, 0.5);
+  }
+  to {
+    box-shadow:
+      0 0 15px rgba(158, 206, 106, 0.8),
+      0 0 25px rgba(158, 206, 106, 0.4);
+  }
+}
+
+/* === KEYBOARD TOGGLE === */
+#custom-keyboard_toggle {
+  background: linear-gradient(
+    135deg,
+    rgba(192, 202, 245, 0.15),
+    rgba(125, 207, 255, 0.15)
+  );
+  border-color: rgba(192, 202, 245, 0.4);
+  color: #c0caf5;
+}
+
+/* === BACKLIGHT === */
+#backlight {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 193, 7, 0.15),
+    rgba(255, 193, 7, 0.15)
+  );
+  border-color: rgba(255, 193, 7, 0.4);
+  color: #ffc107;
+}
+
+/* === AUDIO === */
+#pulseaudio {
+  background: linear-gradient(
+    135deg,
+    rgba(125, 207, 255, 0.15),
+    rgba(115, 218, 202, 0.15)
+  );
+  border-color: rgba(125, 207, 255, 0.4);
+  color: #7dcfff;
+}
+
+#pulseaudio.muted {
+  background: rgba(86, 95, 137, 0.3);
+  color: #565f89;
+}
+
+/* === NETWORK === */
+#network {
+  background: linear-gradient(
+    135deg,
+    rgba(115, 218, 202, 0.15),
+    rgba(158, 206, 106, 0.15)
+  );
+  border-color: rgba(115, 218, 202, 0.4);
+  color: #73daca;
+}
+
+#network.disconnected {
+  background: rgba(247, 118, 142, 0.2);
+  border-color: rgba(247, 118, 142, 0.4);
+  color: #f7768e;
+}
+
+/* === BATTERY === */
+#battery {
+  background: linear-gradient(
+    135deg,
+    rgba(158, 206, 106, 0.15),
+    rgba(125, 207, 255, 0.15)
+  );
+  border-color: rgba(158, 206, 106, 0.4);
+  color: #9ece6a;
+}
+
+#battery.charging {
+  background: linear-gradient(135deg, #9ece6a, #73daca);
+  border-color: #9ece6a;
+  color: #1a1b26;
+  animation: charging-pulse 2s ease-in-out infinite alternate;
+}
+
+#battery.warning:not(.charging) {
+  background: rgba(255, 160, 102, 0.2);
+  border-color: rgba(255, 160, 102, 0.6);
+  color: #ffa066;
+}
+
+#battery.critical:not(.charging) {
+  background: linear-gradient(135deg, #f7768e, #ff757f);
+  border-color: #f7768e;
+  color: #1a1b26;
+  animation: critical-pulse 1s ease-in-out infinite alternate;
+}
+
+@keyframes charging-pulse {
+  from {
+    box-shadow: 0 0 5px rgba(158, 206, 106, 0.5);
+  }
+  to {
+    box-shadow:
+      0 0 15px rgba(158, 206, 106, 0.8),
+      0 0 25px rgba(158, 206, 106, 0.4);
+  }
+}
+
+@keyframes critical-pulse {
+  from {
+    box-shadow: 0 0 5px rgba(247, 118, 142, 0.5);
+  }
+  to {
+    box-shadow:
+      0 0 15px rgba(247, 118, 142, 0.8),
+      0 0 25px rgba(247, 118, 142, 0.4);
+  }
+}
+
+/* === TRAY === */
+#tray {
+  background: rgba(30, 31, 44, 0.6);
+  border-color: rgba(125, 207, 255, 0.3);
+  padding: 2px 8px;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+  opacity: 0.6;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  background: rgba(247, 118, 142, 0.2);
+  border-radius: 6px;
+}
+
+/* === POWER BUTTON === */
+#custom-power {
+  background: linear-gradient(135deg, #f7768e, #ff757f);
+  border: none;
+  color: #1a1b26;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 14px 2px 14px;
+}
+
+#custom-power:hover {
+  background: linear-gradient(135deg, #ff9500, #f7768e);
+  box-shadow: 0 6px 20px rgba(247, 118, 142, 0.4);
+}
+
+/* === SEPARATORS === */
+#custom-separator {
+  background: transparent;
+  border: none;
+  color: rgba(125, 207, 255, 0.4);
+  font-weight: bold;
+  margin: 0 2px;
+  padding: 0 4px;
+}
+
+/* === NOTIFICATION === */
+#custom-notification {
+  background: linear-gradient(
+    135deg,
+    rgba(187, 154, 247, 0.15),
+    rgba(125, 207, 255, 0.15)
+  );
+  border-color: rgba(187, 154, 247, 0.4);
+  color: #bb9af7;
+}

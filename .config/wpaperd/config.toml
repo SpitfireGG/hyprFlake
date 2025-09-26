@@ -1,0 +1,5 @@
+path = "~/Pictures/Wallpapers"
+command = "swww img {path} --transition-type any --transition-fps 60 --transition-step 230"
+interval = 1800
+sort_order = "random"
+on_startup = true

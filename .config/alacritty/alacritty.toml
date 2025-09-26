@@ -1,4 +1,5 @@
-
+[env]
+TERM = "xterm-256color"
 
 [[keyboard.bindings]]
 action = "Paste"
@@ -55,79 +56,99 @@ blinking = "Off"
 shape = "Block"
 
 [font]
-size = 10.5
+size = 10
+
+[font.normal]
+family = "Maple Mono"
+
+[font.bold]
+family = "Maple Mono"
+
+[font.italic]
+family = "Maple Mono Italic"
 
 [font.offset]
 x = 1
-y = 1
+y = 0
 
-[font.normal]
-family = "Maple Mono NF"
-style = "Regular"
-
-[font.bold]
-family = "Maple Mono NF"
-style = "Bold"
-
-[font.italic]
-family = "Maple Mono NF"
-style = "Italic"
 
 [scrolling]
-history = 10_000
+history = 1000
 
 [selection]
 save_to_clipboard = true
 semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 
 [window]
+
 decorations = "none"
-opacity = 0.8
-
-
+dynamic_padding = true
+opacity = 0.70
 [window.padding]
-x=0
-y=0
+x = 0
+y = 0
 
-# Kanagawa Wave Alacritty Colors
+[general]
+live_config_reload = true
+# import = [
+#  "~/.config/alacritty/themes/themes/miasma.toml"
+#]
 
-# Alacritty configuration file in TOML format
-
-[colors]
-transparent_background_colors = true
 
 [colors.primary]
-background = "#1F1F28"
-foreground = "#DCD7BA"
+background = "0x0A0E14" # maps to base00 (Ayu Dark background)
+foreground = "0xCBCCC6" # maps to base05 (Ayu Dark main foreground)
 
 [colors.cursor]
-text = "#DCD7BA"
-cursor = "#7E9CD8"
+text = "0x0A0E14"   # Cursor text color (base00 for contrast)
+cursor = "0xFF7733" # Cursor color (using the vibrant Ayu orange for high visibility)
+
+[colors.vi_mode_cursor]
+text = "0x0A0E14"
+cursor = "0x539AFC" # Using Ayu blue for vi-mode cursor
 
 [colors.selection]
-text = "#C8C093"
-background = "#2A2A37"
+text = "0xCBCCC6"       # Selected text color (main foreground for readability)
+background = "0x272B33" # Selection background (base02)
 
+[colors.search.matches]
+foreground = "0x0A0E14" # Text color on a match
+background = "0xE6B450" # Ayu yellow for search matches
+
+[colors.search.focused_match]
+foreground = "0x0A0E14" # Text color on the focused match
+background = "0xFF7733" # Ayu orange for the focused search match
+
+[colors.footer_bar]
+background = "0x131721" # A slightly lighter background (base01)
+foreground = "0xCBCCC6" # Main foreground text (base05)
+
+[colors.hints.start]
+foreground = "0x0A0E14" # Text color for hint labels
+background = "0xE6B450" # Ayu yellow for the start of a hint
+
+[colors.hints.end]
+foreground = "0x0A0E14" # Text color for hint labels
+background = "0xFF7733" # Ayu orange for the end of a hint
+
+# Normal terminal colors
 [colors.normal]
-black = "#1F1F28"
-red = "#C34043"
-green = "#98BB6C"
-yellow = "#DCA561"
-blue = "#7E9CD8"
-magenta = "#957FB8"
-cyan = "#7FB4CA"
-white = "#DCD7BA"
+black = "0x131721"   # base01
+red = "0xF07178"     # base08
+green = "0xB8CC52"   # base0B
+yellow = "0xE6B450"  # base0A
+blue = "0x539AFC"    # base0D
+magenta = "0xD2A6FF" # base0E
+cyan = "0x59C2FF"    # base0C
+white = "0xCBCCC6"   # base05
 
+# Bright terminal colors
 [colors.bright]
-black = "#727169"
-red = "#C34043"
-green = "#98BB6C"
-yellow = "#DCA561"
-blue = "#7E9CD8"
-magenta = "#957FB8"
-cyan = "#7FB4CA"
-white = "#938AA9"
-
-
-[general] 
-live_config_reload = true
+black = "0x5C6773"   # base03 (comment color)
+red = "0xF07178"     # base08 (often same as normal)
+green = "0xB8CC52"   # base0B (often same as normal)
+yellow = "0xE6B450"  # base0A (often same as normal)
+blue = "0x539AFC"    # base0D (often same as normal)
+magenta = "0xD2A6FF" # base0E (often same as normal)
+cyan = "0x59C2FF"    # base0C (often same as normal)
+white = "0xE6E1CF"   # base06 (lighter foreground)

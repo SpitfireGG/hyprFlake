@@ -1,29 +1,28 @@
 
 $mainMod = SUPER
 
+
 bind = $mainMod, Q, killactive # kill the window on focus
-bind = $mainMod, delete, exit # kill hyperland session
+bind = $mainMod, delete,exec,  hyprlock # kill hyperland session
 bind = $mainMod, W, togglefloating # toggle the window on focus to float
 bind = ALT, return, fullscreen # toggle the window on focus to fullscreen
 bindl = Alt, P,exec,   pavucontrol
 bindl = ALT,S, exec, shutdown
-bind = $mainMod, V, pseudo
+bind = $mainMod, V, exec, swaync-client -t
 bind = $mainMod, H , togglespecialworkspace,
 bind = $mainMod, K, togglesplit
 bind = $mainMod, A, exec, alacritty
+bind = $mainMod, G, exec, $HOME/.config/waybar/scripts/gaming_disable.sh
 
 bind = $mainMod, E, exec, thunar
-bind = $mainMod, return, exec, kitty # open terminal
-bind = $mainMod, C, exec, code # open vs code
-bind = $mainMod, F, exec, firefox # open browser
-bind = $mainMod, L, exec, edge # open browser
+bind = $mainMod, return, exec, $HOME/Dev/bash/dmenu_scripts/opacityHandler.sh
 
-bind = $mainModShift,F , exec, firefox --private-window # open browser
+bind = $mainMod, C, exec, /home/archbishop/Dev/bash/dmenu_scripts/calc.sh
+bind = $mainMod, F, exec, firefox-devedition
+
+bind = $mainModShift,F , exec, firefox-devedition --private-window 
 bind = $mainMod, T, exec, font-manager
-bind = $mainMod, D,exec, discord
 bind = $mainMod, B  ,exec,  qbittorrent
-bind = $mainMod, S, exec , spotify
-bind = $mainMod, O, exec, vencorddesktop
 
 bind = ControlShift, Escape, exec, gnome-system-monitor
 bind = ControlShift, B, exec, alacritty -e  btop
@@ -43,8 +42,8 @@ bindl = Alt, delete, exec, shutdown --halt +1
 bindl = ALT,R, exec, reboot
 
 
-bind = $mainMod, space, exec, /home/kenzo/.config/rofi/launchers/type-5/launcher.sh     # launch desktop applications
-bind = $mainMod, backspace, exec, /home/kenzo/.config/rofi/powermenu/type-2/powermenu.sh     # launch desktop applications
+bind = $mainMod, space, exec, /home/archbishop/.config/rofi/launchers/type-5/launcher.sh     # launch desktop applications
+bind = $mainMod, backspace, exec, /home/archbishop/.config/rofi/powermenu/type-2/powermenu.sh     # launch desktop applications
 bind = $mainMod, tab, exec, pkill rofi || ~/.config/hypr/scripts/rofilaunch.sh  # switch between desktop applications
 
 
@@ -69,8 +68,14 @@ bind = SuperShift, P, exec, playerctl play-pause
 
 
 
-#bind = $mainMod, L, exec, swaylock # lock screen
+
+## dmenu
+bind = $mainMod, L, exec, waypaper
+
+
 #bind = $mainMod, backspace, exec, wlogout --protocol layer-shell # logout menu
+
+
 bind = $mainMod, P, exec, grim -g "$(slurp)" - | swappy -f - # screenshot snip
 
 

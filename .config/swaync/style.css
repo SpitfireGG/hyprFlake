@@ -1,0 +1,220 @@
+/* ===== MINIMALIST SWAYNC STYLE ===== */
+/* Based on the described clean, flat design */
+
+@define-color noti-bg rgba(30, 30, 46, 0.95);
+@define-color noti-border rgba(255, 255, 255, 0.1);
+@define-color text-color #cdd6f4;
+@define-color text-secondary #a6adc8;
+@define-color accent #89b4fa;
+@define-color urgent #f38ba8;
+
+* {
+  font-family: "Work Sans", "SF Pro Display", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+/* ===== CONTROL CENTER ===== */
+.control-center {
+  background: rgba(17, 17, 27, 0.98);
+  border: 1px solid @noti-border;
+  border-radius: 12px;
+  padding: 0;
+}
+
+/* ===== WIDGET TITLE ===== */
+.widget-title {
+  background: transparent;
+  color: @text-color;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 16px 20px 8px 20px;
+  margin: 0;
+  border: none;
+}
+
+.widget-title > button {
+  background: transparent;
+  color: @text-secondary;
+  border: 1px solid @noti-border;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.widget-title > button:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: @text-color;
+}
+
+/* ===== DND WIDGET ===== */
+.widget-dnd {
+  background: transparent;
+  color: @text-color;
+  margin: 0 20px 12px 20px;
+  padding: 12px 0;
+  border: none;
+  border-bottom: 1px solid @noti-border;
+}
+
+.widget-dnd > switch {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  border: none;
+  min-width: 40px;
+  min-height: 20px;
+}
+
+.widget-dnd > switch:checked {
+  background: @accent;
+}
+
+.widget-dnd > switch slider {
+  background: white;
+  border-radius: 50%;
+  margin: 2px;
+  min-width: 16px;
+  min-height: 16px;
+}
+
+/* ===== NOTIFICATIONS LIST ===== */
+.control-center-list {
+  background: transparent;
+  padding: 0;
+  border: none;
+}
+
+.notification-row {
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+.notification {
+  background: @noti-bg;
+  border: 1px solid @noti-border;
+  border-radius: 8px;
+  margin: 8px 12px;
+  padding: 12px;
+  box-shadow: none;
+}
+
+.notification:hover {
+  background: rgba(49, 50, 68, 0.95);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: none;
+}
+
+/* ===== NOTIFICATION CONTENT ===== */
+.notification-content {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.summary {
+  font-size: 14px;
+  font-weight: 500;
+  color: @text-color;
+  margin-bottom: 4px;
+}
+
+.time {
+  font-size: 11px;
+  color: @text-secondary;
+  opacity: 0.8;
+}
+
+.body {
+  font-size: 13px;
+  color: @text-secondary;
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+.app-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: @accent;
+  margin-top: 4px;
+  opacity: 0.9;
+}
+
+/* ===== CLOSE BUTTON ===== */
+.close-button {
+  background: rgba(255, 255, 255, 0.1);
+  color: @text-color;
+  border: none;
+  border-radius: 6px;
+  margin: 0;
+  padding: 0;
+  min-width: 24px;
+  min-height: 24px;
+}
+
+.close-button:hover {
+  background: @urgent;
+  color: white;
+}
+
+/* ===== SCROLLBAR ===== */
+scrollbar {
+  background: transparent;
+  border-radius: 0;
+  min-width: 6px;
+}
+
+scrollbar trough {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+  margin: 2px;
+}
+
+scrollbar slider {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  min-height: 40px;
+}
+
+/* ===== URGENCY LEVELS ===== */
+.critical {
+  background: rgba(243, 139, 168, 0.15);
+  border-color: rgba(243, 139, 168, 0.3);
+}
+
+.critical .summary {
+  color: @urgent;
+}
+
+/* ===== ANIMATIONS ===== */
+.notification {
+  animation: slide-in-right 0.2s ease;
+}
+
+.notification.closing {
+  animation: slide-out-right 0.2s ease;
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out-right {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100);
+    opacity: 0;
+  }
+}

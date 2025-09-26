@@ -1,222 +1,226 @@
 {
-  // Basic Bar Settings
-  "position": "top",
   "layer": "top",
-  "margin-top": 5,      // Add some margin around the bar
-  "margin-bottom": 0,   // Or adjust as needed for your setup
-  "margin-left": 5,
-  "margin-right": 5,
+  "position": "top",
+  "height": 28,
+  "margin-top": 6,
+  "margin-bottom": 6,
+  "margin-left": 6,
+  "margin-right": 6,
+  "spacing": 4,
   "exclusive": true,
-  "height": 30,         // Increased height for better visuals
-  "passthrough": false,
   "gtk-layer-shell": true,
+  "passthrough": false,
 
-  // Module Placement
   "modules-left": [
     "custom/launcher",
+    "custom/separator#dot",
     "hyprland/workspaces",
+    "custom/separator#dot",
     "custom/playerctl",
-    "custom/playerlabel"
-//    "cava"
+    "custom/playerlabel",
   ],
+
   "modules-center": [
-    "clock"
+    "custom/separator#dot",
+    "clock",
+    "custom/separator#dot",
+    "custom/weather",
   ],
+
   "modules-right": [
-    "temperature",
+    "custom/system_stats",
+    "custom/separator#dot",
     "backlight",
     "pulseaudio",
     "network",
     "battery",
-    "custom/redshift", // Moved redshift near other status icons
-    "tray"
+    "custom/separator#dot",
+    "tray",
+    "custom/power",
   ],
 
-  // --- Module Configurations ---
-
-  "clock": {
-    "format": "{:%d %b %H:%M}", // Icon + Format
-    "tooltip-format": "<big>{:%Y %B %d}</big>\n<tt>{calendar}</tt>", // Enhanced tooltip
-    "format-alt": " {:%Y-%m-%d}" // Alternate format on click/scroll
+  "custom/launcher": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "~/.config/rofi/launchers/type-5/launcher.sh",
   },
 
   "hyprland/workspaces": {
-    "active-only": false,
-    "all-outputs": true,
     "disable-scroll": false,
+    "all-outputs": true,
+    "on-click": "activate",
+    "persistent_workspaces": {
+      "*": 10,
+    },
     "on-scroll-up": "hyprctl dispatch workspace e-1",
     "on-scroll-down": "hyprctl dispatch workspace e+1",
     "format": "{icon}",
-    "on-click": "activate",
-    "persistent_workspaces": {
-      "*": 5 // Adjust to show at least 5 workspaces, or match your setup
-      // "HDMI-A-1": [1, 2, 3, 4, 5] // Example for specific output
-    },
     "format-icons": {
-      "1": "", // Using filled circle variants or numbers
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": "",
-      "6": "", // Add more if needed
-      "urgent": "",  // Exclamation icon for urgent
-      "active": "",  // Different filled circle for active
-      "default": "", // Faint circle for inactive
-      "focused": "",  // Same as active for focus
-      "empty": ""    // Hollow circle for empty persistent
-    }
+      "1": "Ⅰ",
+      "2": "Ⅱ",
+      "3": "Ⅲ",
+      "4": "Ⅳ",
+      "5": "Ⅴ",
+      "6": "Ⅵ",
+      "7": "Ⅶ",
+      "8": "Ⅷ",
+      "9": "Ⅸ",
+      "10": "Ⅹ",
+      "focused": "◉",
+      "default": "○",
+      "empty": "◌",
+    },
   },
 
   "custom/playerctl": {
     "format": "{icon}",
     "return-type": "json",
     "max-length": 64,
-    // IMPORTANT: Removed the <span color='...'> tags, styling is now done in SCSS via 'class'
     "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
     "on-click-middle": "playerctl play-pause",
     "on-click": "playerctl previous",
     "on-click-right": "playerctl next",
     "format-icons": {
-      "Playing": "󰐊", // Nerd Font Play
-      "Paused": "󰏤",  // Nerd Font Pause
-      "Stopped": "󰓛" // Nerd Font Stop
-    }
+      "Playing": "",
+      "Paused": "",
+      "Stopped": "",
+    },
   },
 
   "custom/playerlabel": {
     "format": "<span>{}</span>",
     "return-type": "json",
-    "max-length": 50, // Keep it reasonably short
+    "max-length": 40,
     "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
     "on-click-middle": "playerctl play-pause",
     "on-click": "playerctl previous",
     "on-click-right": "playerctl next",
-    "escape": true
+    "escape": true,
   },
 
+  "custom/weather": {
+    "format": "{}",
+    "tooltip": true,
+    "interval": 1800,
+    "exec": "$HOME/.config/waybar/scripts/weather.sh",
+    "return-type": "json",
+  },
 
-//     "cava": {
-//         "cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
-//         "framerate": 60,
-//         "autosens": 1,
-//         "sensitivity": 100,
-//         "bars": 14,
-//         "lower_cutoff_freq": 50,
-//         "higher_cutoff_freq": 10000,
-//         "method": "pulse",
-//         "source": "auto",
-//         "stereo": true,
-//         "reverse": false,
-//         "bar_delimiter": 0,
-//         "monstercat": false,
-//         "waves": true,
-//         "noise_reduction": 0.8,
-//         "input_delay": 2,
-//         "format-icons" : ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
-//         "actions": {
-//                    "on-click-right": "mode"
-//                    }
-//     },
-//
-
-  "battery": {
-    "states": {
-      "warning": 30,
-      "critical": 15
+  "clock": {
+    "interval": 1,
+    "format": "{:%H:%M}",
+    "format-alt": "{:%A, %B %d}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "on-click-right": "mode",
+      "format": {
+        "months": "<span color='#b4befe'><b>{}</b></span>",
+        "days": "<span color='#cdd6f4'><b>{}</b></span>",
+        "weeks": "<span color='#89dceb'><b>W{}</b></span>",
+        "weekdays": "<span color='#f5c2e7'><b>{}</b></span>",
+        "today": "<span color='#f38ba8'><b><u>{}</u></b></span>",
+      },
     },
-    "format": "{icon} {capacity}%",
-    "format-charging": "󰂄 {capacity}%", // Keep charging icon distinct if desired
-    "format-plugged": " {capacity}%",  // Power plug icon
-    "format-alt": "{time} {icon}",
-    // Using Font Awesome battery icons (often included in Nerd Fonts)
-    "format-icons": ["", "", "", "", ""] // Empty, Quarter, Half, Three-quarters, Full
-    // If the above don't render, revert to the previous set or find others on a Nerd Font cheat sheet
-    // Alternative Nerd Font set: ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
   },
 
-  "network": {
-    "format-disconnected": "󰤮 Disconnected", // Wifi icon with slash
-    "format-ethernet": "󰈀 {ifname}", // Keep Ethernet icon
-    "format-linked": "󰤭 {ifname} (No IP)", // Wifi icon with exclamation/question mark variant
-    "format-wifi": "󰤥 {essid}",          // Stronger Wifi signal icon
-    "tooltip-format-wifi": "󰤥 {essid} ({signalStrength}%)  {ipaddr}/{cidr}", // Match icon
-    "tooltip-format-ethernet": "󰈀 {ifname}  {ipaddr}/{cidr}",
-    // ... (Keep other network settings: interval, clicks, etc.)
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "<span foreground='#f38ba8'>󰂚</span>",
+      "none": "󰂜",
+      "dnd-notification": "<span foreground='#f38ba8'>󰂛</span>",
+      "dnd-none": "󰪑",
+      "inhibited-notification": "<span foreground='#f38ba8'>󰂚</span>",
+      "inhibited-none": "󰂜",
+      "dnd-inhibited-notification": "<span foreground='#f38ba8'>󰂛</span>",
+      "dnd-inhibited-none": "󰪑",
+    },
+    "escape": true,
   },
 
-  "tray": {
-    "icon-size": 18,    // Slightly larger icons
-    "spacing": 10       // More space between tray icons
+  "custom/system_stats": {
+    "exec": "$HOME/.config/waybar/scripts/system_stats.sh",
+    "format": "{}",
+    "interval": 3,
+    "return-type": "json",
   },
 
   "backlight": {
-    "device": "intel_backlight", // Check your device name with `ls /sys/class/backlight/`
-    "format": "{icon} {percent}%",
-    "format-icons": ["󰃞", "󰃟", "󰃠"], // Brightness icons low, med, high
-    "on-scroll-up": "brightnessctl s 5%+",
-    "on-scroll-down": "brightnessctl s 5%-"
-  },
-
-  "custom/redshift": {
-    "format": "{icon}",
-    "exec": "redshift -p -l $(curl -s 'https://ipinfo.io/loc') | grep 'Period:' | cut -d' ' -f2", // Basic check - needs refinement
-    "interval": 600, // Check every 10 mins
-    "format-icons": {
-      "daytime": "", // Sun icon
-      "transition": "󰗎", // Half-moon icon
-      "night": "󰽥"     // Moon icon
-    },
-    "tooltip": true,
-    "tooltip-format": "Redshift: {}",
-    "on-click": "killall -USR1 redshift", // Toggle redshift on/off (assuming redshift handles USR1)
-    "on-click-right": "redshift -x" // Disable redshift completely
-    // Scroll actions might need custom script if not built-in
+    "device": "intel_backlight",
+    "format": "{icon}  {percent}%",
+    "format-icons": ["󰃝", "󰃞", "󰃟", "󰃠"],
+    "on-scroll-up": "brightnessctl s 2%+ && pkill -RTMIN+2 waybar",
+    "on-scroll-down": "brightnessctl s 2%- && pkill -RTMIN+2 waybar",
+    "smooth-scrolling-threshold": 1,
   },
 
   "pulseaudio": {
-    "scroll-step": 5, // Increase scroll step
     "format": "{icon} {volume}%",
-    "format-muted": "󰖁 Muted", // Muted icon
+    "format-muted": "󰖁 Muted",
+    "on-click": "pavucontrol",
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
+    "scroll-step": 2,
     "format-icons": {
       "headphone": "󰋋",
       "hands-free": "󰋎",
       "headset": "󰋎",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": ["󰕿", "󰖀", "󰕾"] // Volume low, med, high icons
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["󰕿", "󰖀", "󰕾"],
     },
-    "on-click": "pavucontrol" // Open pavucontrol on click
-    // Removed swayosd-client calls as they depend on another tool
-    // You can add them back if you use swayosd
-    // "on-click-right": "swayosd-client --output-volume mute-toggle",
-    // "on-scroll-down": "swayosd-client --output-volume lower",
-    // "on-scroll-up": "swayosd-client --output-volume raise"
+    "smooth-scrolling-threshold": 1,
   },
 
-  "temperature": {
-    "thermal-zone": 0, // Adjust zone if needed
-    "hwmon-path": "/sys/class/thermal/thermal_zone0/temp", // Adjust path if needed
-    "critical-threshold": 85, // Higher critical threshold
-    "format-critical": " {temperatureC}°C", // Fire icon for critical
-    "format": " {temperatureC}°C", // Thermometer icon
-    "format-icons": ["", "", ""], // Optional: Icons for low/med/high temp ranges
-    "interval": 10,
-    "on-click": "htop" // Open htop or another monitor
+  "network": {
+    "format-wifi": "󰤪  {essid}",
+    "format-ethernet": "󰈁 Wired",
+    "format-linked": "󰤭 {ifname} (No IP)",
+    "format-disconnected": "󰤭 Disconnected",
+    "tooltip-format": "{ifname} via {gwaddr}",
+    "tooltip-format-wifi": "󰖩 {essid} ({signalStrength}%)\n󰩟 {ipaddr}/{cidr}\n󰞒 {frequency} MHz",
+    "tooltip-format-ethernet": "󰈁 {ifname}\n󰩟 {ipaddr}/{cidr}",
+    "on-click": "nm-connection-editor",
   },
 
-  "custom/weather": {
-    "format": "{} {}", // Icon first, then text
-    "exec": "~/.config/waybar/scripts/waybar-wttr.py", // Use a helper script (see below)
-    "return-type": "json",
-    "interval": 900, // Update every 15 minutes
-    "tooltip": true, // Enable tooltip which will be set by the script
-    "on-click": "xdg-open https://wttr.in/$(curl -s ipinfo.io/city)" // Open wttr.in for your city
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20,
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󰚥 {capacity}%",
+    "format-alt": "{time} {icon}",
+    "format-icons": ["", "", "", "", ""],
   },
 
-  "custom/launcher": {
-    "format": "", // Arch icon or your preferred distro/launcher icon
+  "tray": {
+    "icon-size": 16,
+    "spacing": 6,
+  },
+
+  "custom/power": {
+    "format": "",
     "tooltip": false,
-    "on-click": "~/.config/rofi/launchers/type-5/launcher.sh" // Keep your launcher script
-  }
+    "on-click": "wlogout -p layer-shell",
+  },
+
+  "custom/separator#dot": {
+    "format": " ",
+    "tooltip": false,
+  },
+
+  "custom/separator#line": {
+    "format": "│",
+    "tooltip": false,
+  },
 }

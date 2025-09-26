@@ -1,133 +1,173 @@
 * {
-  font-family: "CommitMono Nerd Font", "Font Awesome 6 Free", monospace;
-  font-size: 0.8rem;
-  font-weight: bold;
   border: none;
-  border-radius: 0;
-  padding: 0;
-  margin: 0;
+  border-radius: 8px;
+  font-family: "Work Sans", "Font Awesome 6 Free";
+  font-size: 14px;
+  font-weight: 500;
   min-height: 0;
+  transition: all 0.2s ease-in-out;
 }
 
 window#waybar {
-  background-color: rgba(42, 42, 55, 0.9); /* #2A2A37 with 90% opacity */
-  color: #DCD7BA; /* #DCD7BA */
-  border-radius: 10px;
-  border: 1px solid #727169; /* #727169 */
-}
-
-tooltip {
-  background-color: #363646; /* #363646 */
-  border: 1px solid #727169; /* #727169 */
-  border-radius: 6px;
-  padding: 8px;
-}
-
-tooltip label {
-  color: #DCD7BA; /* #DCD7BA */
-}
-
-#workspaces,
-#clock,
-#custom-playerctl,
-#custom-playerlabel,
-#cava,
-#custom-cava,
-#battery,
-#network,
-#tray,
-#backlight,
-#custom-redshift,
-#pulseaudio,
-#temperature,
-#custom-weather,
-#custom-launcher {
-  background-color: transparent;
-  color: #DCD7BA; /* #DCD7BA */
-  padding: 3px 6px;
-  margin: 4px 2px;
-  border-radius: 8px;
-}
-
-#workspaces button:hover,
-#clock:hover,
-#custom-playerctl:hover,
-#custom-playerlabel:hover,
-#battery:hover,
-#network:hover,
-#backlight:hover,
-#custom-redshift:hover,
-#pulseaudio:hover,
-#temperature:hover,
-#custom-weather:hover,
-#custom-launcher:hover {
-  background-color: #223249; /* #223249 */
-  color: #7E9CD8; /* #7E9CD8 */
-  border-radius: 8px;
-}
-
-#workspaces {
-  background-color: #2A2A37; /* #2A2A37 */
-  padding: 0 5px;
-  margin: 4px 5px;
-  border-radius: 8px;
+  background: linear-gradient(
+    90deg,
+    rgba(30, 30, 46, 0.9),
+    rgba(49, 50, 68, 0.9)
+  );
+  color: #cdd6f4;
+  border-radius: 12px;
+  border: 1px solid rgba(137, 180, 250, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  opacity: 0.95;
 }
 
 #workspaces button {
-  padding: 0 5px;
-  background-color: transparent;
-  color: #C8C093; /* #C8C093 */
-  border-radius: 0;
-}
-
-#workspaces button.active {
-  color: #7E9CD8; /* #7E9CD8 */
-  background-color: rgba(34, 50, 73, 0.5); /* #223249 with 50% opacity */
-}
-
-#workspaces button.active.focused {
-  color: #7E9CD8; /* #7E9CD8 */
-  background-color: #223249; /* #223249 */
-}
-
-#workspaces button.urgent {
-  color: #C34043; /* #C34043 */
+  color: #6c7086;
+  padding: 0 8px;
+  margin: 0 4px;
+  border-radius: 6px;
 }
 
 #workspaces button:hover {
-  background-color: #223249; /* #223249 */
-  color: #7E9CD8; /* #7E9CD8 */
+  background: rgba(137, 180, 250, 0.2);
+  color: #b4befe;
 }
 
-#clock { color: #7E9CD8; } /* #7E9CD8 */
-#custom-playerctl { color: #957FB8; } /* #957FB8 */
-#custom-playerctl.Playing { color: #98BB6C; } /* #98BB6C */
-#custom-playerctl.Paused { color: #DCA561; } /* #DCA561 */
-#custom-playerlabel { color: #C8C093; font-style: italic; } /* #C8C093 */
-
-#battery { color : #DCA561;} /* #DCA561 */
-#battery.charging { color: #98BB6C; } /* #98BB6C */
-#battery.plugged { color: #7E9CD8; } /* #7E9CD8 */
-#battery.warning:not(.charging) { color: #FFA066; } /* #FFA066 */
-#battery.critical:not(.charging) { color: #C34043; font-weight: bold; } /* #C34043 */
-#network { color: #7E9CD8; } /* #7E9CD8 */
-#network.disconnected { color: #FFA066; } /* #FFA066 */
-#backlight { color: #DCA561; } /* #DCA561 */
-#pulseaudio { color: #7FB4CA; } /* #7FB4CA */
-#pulseaudio.muted { color: #C8C093; } /* #C8C093 */
-#temperature.critical { color: #C34043; } /* #C34043 */
-
-#tray {
-  background-color: rgba(42, 42, 55, 0.5); /* #2A2A37 with 50% opacity */
-  border-radius: 8px;
-  padding: 0 8px;
-  margin: 4px 5px;
-}
-#tray > .passive { opacity: 0.6; }
-#tray > .needs-attention {
-  background-color: #C34043; /* #C34043 */
-  color: #938AA9; /* #938AA9 */
+#workspaces button.focused {
+  background: linear-gradient(45deg, #89b4fa, #b4befe);
+  color: #1e1e2e;
+  box-shadow: 0 0 8px rgba(137, 180, 250, 0.5);
 }
 
-#custom-launcher { color: #7E9CD8; font-size: 1.3rem; } /* #7E9CD8 */
-#custom-launcher:hover { color: #938AA9; background-color: #7E9CD8; } /* #938AA9, #7E9CD8 */
+#workspaces button.urgent {
+  color: #f38ba8;
+  animation: pulse 1.5s infinite;
+}
+
+#custom-launcher,
+#custom-playerctl,
+#clock,
+#custom-notification,
+#custom-system_stats,
+#backlight,
+#pulseaudio,
+#network,
+#battery,
+#tray,
+#custom-power {
+  padding: 0 10px;
+  margin: 0 4px;
+  border-radius: 6px;
+}
+
+#custom-launcher {
+  background: linear-gradient(45deg, #89b4fa, #b4befe);
+  color: #1e1e2e;
+  font-size: 16px;
+}
+
+#custom-launcher:hover {
+  background: linear-gradient(45deg, #b4befe, #89b4fa);
+}
+
+#custom-playerctl {
+  color: #a6e3a1;
+}
+
+#custom-playerctl.Playing {
+  background: rgba(166, 227, 161, 0.2);
+}
+
+#custom-playerlabel {
+  color: #a6e3a1;
+  font-style: italic;
+}
+
+#clock {
+  background: linear-gradient(45deg, #89dceb, #74c7ec);
+  color: #1e1e2e;
+}
+
+#custom-notification {
+  color: #f5c2e7;
+}
+
+#custom-notification:hover {
+  background: rgba(245, 194, 231, 0.2);
+}
+
+#custom-system_stats {
+  color: #cdd6f4;
+}
+
+#backlight {
+  color: #f9e2af;
+}
+
+#pulseaudio {
+  color: #89dceb;
+}
+
+#pulseaudio.muted {
+  color: #f38ba8;
+}
+
+#network {
+  color: #94e2d5;
+}
+
+#battery {
+  color: #a6e3a1;
+}
+
+#battery.charging {
+  color: #a6e3a1;
+}
+
+#battery.warning:not(.charging) {
+  color: #fab387;
+}
+
+#battery.critical:not(.charging) {
+  color: #f38ba8;
+  animation: pulse 1s infinite;
+}
+
+#custom-power {
+  background: linear-gradient(45deg, #f38ba8, #f9e2af);
+  color: #1e1e2e;
+}
+
+#custom-power:hover {
+  background: linear-gradient(45deg, #f9e2af, #f38ba8);
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .active {
+  -gtk-icon-effect: highlight;
+}
+
+#custom-separator#dot {
+  color: #b4befe;
+  font-size: 12px;
+}
+
+#custom-separator#line {
+  color: #b4befe;
+  font-size: 16px;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}

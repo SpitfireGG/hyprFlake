@@ -2,10 +2,10 @@
 	monitor = 0
 	follow = keyboard
 	origin = top-right
-	offset = 10x10
+	offset = 20x20
 	width = 300
 	indicate_hidden = yes
-	transparency = yes
+	transparency = no
 	separator_height = 1
 	padding = 8
 	horizontal_padding = 12
@@ -13,7 +13,7 @@
 	separator_color = frame
 	sort = yes
 	idle_threshold = 120
-	font = CommitMono Nerd Font 11
+	font = Maple Mono NF 12
 	line_height = 0
 	markup = full
 	format = "<b>%s</b>\n%b"
@@ -36,27 +36,27 @@
 	always_run_script = true
 	title = Dunst
 	class = Dunst
-	corner_radius = 10
-	icon_corner_radius = 5
+	corner_radius = 1
+	icon_corner_radius = 1
 	force_xinerama = false
 
 [urgency_low]
-	background = "#1F1F28C0"  ; 
-	foreground = "#DCD7BA"  ; 
-	frame_color= "#1F1F28C0"  ; 
+	background = "#271B33"  ; Gruvbox dark background
+	foreground = "#EBDBB2"    ; Gruvbox light foreground
+	frame_color = "#504945"   ; Gruvbox gray
 	timeout = 5
 
 [urgency_normal]
-	background = "#2A2A37C0"  ; 
-	foreground = "#DCD7BA"  ; 
-	frame_color = "#7E9CD8"  ;
-	timeout = 5
+	background = "#272B33"  ; Gruvbox dark1
+	foreground = "#EBDBB2"    ; Gruvbox light foreground
+	frame_color = "#83A598"   ; Gruvbox blue
+	timeout = 10
 
 [urgency_critical]
-	background = "#1F1F28C0"  ; 
-	foreground = "#C34043"  ; 
-	frame_color= "#C34043"  ;
-	timeout = 0
+	background = "#272B33"  ; Gruvbox dark background
+	foreground = "#FB4934"    ; Gruvbox bright red
+	frame_color = "#FB4934"   ; Gruvbox bright red
+	timeout = 20
 
 [spotify]
 	appname = Spotify*
