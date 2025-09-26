@@ -13,7 +13,7 @@
 </div>
 
 <div align="center">
-  <img src="assets/combined.png" width="100%" alt="Desktop Preview - Firefox Browsing">
+  <img src="assets/combined0.png" width="100%" alt="Desktop Preview - Firefox Browsing">
 </div>
 
 ---
@@ -29,17 +29,18 @@ This repository contains my personal NixOS configuration, utilizing Nix flakes a
 Visual examples of the configuration.
 
 ### Hyprland Desktop
-| Home | Terminal with tmux | Browsing  |
-|--------------|----------|-------------------|
-| <img src="assets/home.png" width="100%" alt="Hyprland with Spotify"> | <img src="assets/btop.png" width="100%" alt="Hyprland with Terminals"> | <img src="assets/firefox.png" width="100%" alt="Hyprland with firefox"> |
+
+| Home                                                                 | Terminal with tmux                                                         |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| <img src="assets/home.png" width="100%" alt="Hyprland with Spotify"> | <img src="assets/terminal.png" width="100%" alt="Hyprland with Terminals"> |
 
 ### Neovim
+
 Configured declaratively using Nixvim, with advanced LSP support (including `nixd` for Nix files) and `nvim-cmp`.
 
 <div align="center">
   <img src="assets/nvim.png" width="100%" alt="Neovim LSP Hover">
   <img src="assets/lsp.png" width="100%" alt="Neovim Completion Popup">
-  <img src="assets/terminal.png" width="100%" alt="Neovim Completion Popup">
 </div>
 
 ---
@@ -75,7 +76,7 @@ The configuration is organized to be modular and easy to navigate:
 │   └── home-manager/     # Modules for the Home Manager user layer (programs, dotfiles, themes).
 │       └── programs/, user/...       # Organized by concern (e.g., nvim, hyprland, themes, colors).
 ├── users/                # Contains configuration files for each *user profile*.
-│   └── <username>/       # e.g., kenzo/
+│   └── <username>/       # e.g., archbishop/
 │       └── home.nix           # Imports common Home Manager modules and sets user-specific overrides.
 ├── pkgs/                 # Definitions for custom packages.
 │   └── default.nix
@@ -91,12 +92,12 @@ The configuration is organized to be modular and easy to navigate:
 
 1.  **`flake.nix`** tells Nix where to find the configurations for your specific machines (`hosts/`) and users (`users/`).
 2.  A machine's **`hosts/<hostname>/configuration.nix`** pulls together:
-    *   Its specific hardware configuration.
-    *   Reusable **NixOS modules** from `modules/nixos/` (e.g., enabling systemd services, setting up networking, configuring the display manager).
-    *   The Home Manager system module, which in turn activates the configuration for a specific user profile defined in **`users/<username>/home.nix`**.
+    - Its specific hardware configuration.
+    - Reusable **NixOS modules** from `modules/nixos/` (e.g., enabling systemd services, setting up networking, configuring the display manager).
+    - The Home Manager system module, which in turn activates the configuration for a specific user profile defined in **`users/<username>/home.nix`**.
 3.  A user's **`users/<username>/home.nix`** pulls together:
-    *   Reusable **Home Manager modules** from `modules/home-manager/` (e.g., configuring specific programs like Neovim or Hyprland, managing dotfiles, applying themes).
-    *   Any user-specific overrides or settings not handled by the common modules.
+    - Reusable **Home Manager modules** from `modules/home-manager/` (e.g., configuring specific programs like Neovim or Hyprland, managing dotfiles, applying themes).
+    - Any user-specific overrides or settings not handled by the common modules.
 4.  **`modules/`** contain the actual configurations for programs and system features. These modules are designed to be imported by any host or user configuration, promoting reusability.
 5.  **`files/`** (if added) is where static files referenced by your modules (like a custom `init.lua` for Neovim if not using Nixvim exclusively, or config files for programs not fully supported by Home Manager modules) would live. They are then linked or included by the relevant modules.
 
@@ -104,8 +105,8 @@ The configuration is organized to be modular and easy to navigate:
 
 ## ❤️ Credits & Inspiration
 
-*   Thanks to the NixOS, Home Manager, Hyprland, Neovim, and Nixvim communities.
-*   Inspired by other dotfile configurations.
+- Thanks to the NixOS, Home Manager, Hyprland, Neovim, and Nixvim communities.
+- Inspired by other dotfile configurations.
 
 ---
 
