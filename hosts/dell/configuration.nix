@@ -1,9 +1,6 @@
-{
-  ...
-}:
+{ config, ... }:
 {
   imports = [
-
     #hardware-configuration
     ./hardware-configuration.nix
 
@@ -29,9 +26,26 @@
     ../../modules/nixos/programs/default.nix
 
     # overlays
-    ../../overlays/waybar.nix
+    # ../../overlays/waybar.nix
 
     #miscs
     ../../modules/nixos/misc/default.nix
+
+    ../../modules/nixos/system/gaming.nix
+
+    #styling
+
+    #    ../../overlays/firefox-nightly.nix
   ];
+  hardware.opengl.enable = true;
+  gaming.enable = true;
+
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
+
+  # Add your user to libvirtd group
+
+  users.users.archbishop.extraGroups = [ "libvirtd" ];
+  users.extraGroups.vboxusers.members = [ "archbishop" ];
 }
