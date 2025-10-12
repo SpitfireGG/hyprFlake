@@ -8,11 +8,15 @@
   username = "archbishop";
   homeDirectory = "/home/${username}";
 in {
-  imports = [];
+  imports = [
+    inputs.noctalia.homeModules.default
+    ./shell/noctalia/default.nix
+  ];
 
   home = {
     inherit username homeDirectory;
     packages = with pkgs; [
+      inputs.noctalia.packages.${system}.default
       reversal-icon-theme
       bc
       hyprlock
@@ -45,12 +49,23 @@ in {
       xbanish
       delta
     ];
+    pointerCursor = {
+      gtk.enable = true;
+
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Classic";
+      size = 14;
+    };
+    stateVersion = "24.05";
   };
 
-  home.stateVersion = "24.05";
-
   programs = {
+    nixvim = {
+      enable = true;
+    };
     home-manager.enable = true;
+
+    # hyprlock
     hyprlock = {
       enable = true;
       settings = {
@@ -65,7 +80,7 @@ in {
         background = [
           {
             monitor = "";
-            path = "screenshot";
+            path = "/home/archbishop/Pictures/anime/okay/Click.jpg";
             blur_passes = 3;
             blur_size = 8;
             noise = 0.0117;
@@ -308,16 +323,11 @@ in {
     direnv.enable = true;
     fzf.enable = true;
   };
-
-  programs.nixvim = {
-    enable = true;
-  };
-
   gtk = {
     enable = true;
     theme = {
-      name = lib.mkForce "Gruvbox-dark";
       package = pkgs.gruvbox-gtk-theme;
+      name = "gruvbox-dark";
     };
     iconTheme = {
       package = pkgs.reversal-icon-theme;
