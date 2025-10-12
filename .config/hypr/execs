@@ -16,17 +16,17 @@ exec-once = swww-daemon --format xrgb
 
 exec-once = lxqt-policykit-agent
 
-exec-once  = waybar 
+exec-once  = noctalia-shell 
 
 exec-once = hyprlock
+
+exec-once =   noctalia-shell ipc call lockScreen toggle
 
 exec-once  = nm-applet 
 
 exec-once  = blueman-applet
 
 exec-once = pkill dunst 
-
-exec-once  = swaync &
 
 exec-once = hyprctl setcursor Phinger-Cursors 18
 

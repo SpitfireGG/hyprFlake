@@ -8,41 +8,30 @@ bind = $mainMod, W, togglefloating # toggle the window on focus to float
 bind = ALT, return, fullscreen # toggle the window on focus to fullscreen
 bindl = Alt, P,exec,   pavucontrol
 bindl = ALT,S, exec, shutdown
-bind = $mainMod, V, exec, swaync-client -t
-bind = $mainMod, H , togglespecialworkspace,
 bind = $mainMod, K, togglesplit
 bind = $mainMod, A, exec, alacritty
 bind = $mainMod, G, exec, $HOME/.config/waybar/scripts/gaming_disable.sh
 
 bind = $mainMod, E, exec, thunar
 bind = $mainMod, return, exec, $HOME/Dev/bash/dmenu_scripts/opacityHandler.sh
-
-bind = $mainMod, C, exec, /home/archbishop/Dev/bash/dmenu_scripts/calc.sh
+bind = $mainMod, Y, exec, /home/archbishop/Dev/bash/dmenu_scripts/calc.sh
 bind = $mainMod, F, exec, firefox-devedition
-
 bind = $mainModShift,F , exec, firefox-devedition --private-window 
 bind = $mainMod, T, exec, font-manager
-bind = $mainMod, B  ,exec,  qbittorrent
-
 bind = ControlShift, Escape, exec, gnome-system-monitor
-bind = ControlShift, B, exec, alacritty -e  btop
+bind = ControlShift, U, exec, alacritty -e  btop
 
-bind = $mainMod, Z, exec, pypr toggle term && hyprctl dispatch bringactivetotop
 $scratchpadsize = size 70% 70%
-
-
 $scratchpad = class:^(scratchpad)$
 windowrulev2 = float,$scratchpad
 windowrulev2 = $scratchpadsize,$scratchpad
 windowrulev2 = workspace special silent, $scratchpad
 windowrulev2 = center , $scratchpad
 
-bindl = SuperShift, L, exec, sleep 0.1 && systemctl suspend
 bindl = Alt, delete, exec, shutdown --halt +1
 bindl = ALT,R, exec, reboot
 
 
-bind = $mainMod, space, exec, /home/archbishop/.config/rofi/launchers/type-5/launcher.sh     # launch desktop applications
 bind = $mainMod, backspace, exec, /home/archbishop/.config/rofi/powermenu/type-2/powermenu.sh     # launch desktop applications
 bind = $mainMod, tab, exec, pkill rofi || ~/.config/hypr/scripts/rofilaunch.sh  # switch between desktop applications
 
@@ -70,21 +59,25 @@ bind = SuperShift, P, exec, playerctl play-pause
 
 
 ## dmenu
-bind = $mainMod, L, exec, waypaper
-
-
 #bind = $mainMod, backspace, exec, wlogout --protocol layer-shell # logout menu
-
-
 bind = $mainMod, P, exec, grim -g "$(slurp)" - | swappy -f - # screenshot snip
-
-
 bind = $mainMod, J, exec, notify-send "Hyprland version: $(hyprctl version | head -2 | tail -1 | cut -f2 -d ' ')" "" -a 'Hyprland keybind'
 bind = $mainMod, Y, exec, notify-send "Millis since epoch" "$(date +%s%N | cut -b1-13)" -a 'Hyprland keybind'
 bind = SuperAlt, Equal, exec, notify-send "Hyprland test" "oh yeah this fucking works well" -u critical -a 'Hyprland keybind'
 
 
-
+bind = SUPER, SPACE, exec,  noctalia-shell ipc call launcher toggle
+bind = SUPER, I, exec,  noctalia-shell ipc call sidePanel toggle
+bind = SUPER, comma, exec,  noctalia-shell ipc call settings toggle
+bind = SUPER, X, exec,  noctalia-shell ipc call volume increase
+bind = SUPER, Z, exec,  noctalia-shell ipc call volume decrease
+bind = SUPER, M, exec,  noctalia-shell ipc call volume mute
+bind = SUPER, V, exec,  noctalia-shell ipc call brightness decrease
+bind = SUPER, B, exec,  noctalia-shell ipc call brightness increase
+bind = SUPER, H, exec,  noctalia-shell ipc call launcher clipboard
+bind = SUPER, C, exec,  noctalia-shell ipc call launcher calculator
+bind = SUPER, L, exec,  noctalia-shell ipc call lockScreen toggle
+bind = SUPER, R, exec,  noctalia-shell ipc call wallpaper random
 
 
 
