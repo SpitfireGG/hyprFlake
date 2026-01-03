@@ -66,13 +66,14 @@
             }
             {
               id = "SystemMonitor";
+              CompactMode = false;
             }
             {
               id = "Notification";
             }
             {
               id = "Spacer";
-              Width = 10;
+              Width = 7;
             }
             {
               formatHorizontal = "HH:mm";

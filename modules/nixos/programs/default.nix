@@ -1,35 +1,85 @@
 {pkgs, ...}: {
   environment = {
     systemPackages = with pkgs; [
+      hyprlock
+      hyprland
+      xdg-desktop-portal
       xdg-desktop-portal-hyprland
+      wayland
+      wl-clipboard
+      swww
+      wofi
+      rofi
+      cliphist
+      libnotify
+      lxqt.lxqt-policykit
 
-      python3
-
-      clang-manpages
+      firefox-devedition
+      ghostty
+      alacritty
+      tmux
+      fish
+      starship
+      fzf
+      jump
+      bat
       tldr
-      iwgtk
-      kooha
+      jq
+      yq
+      moreutils
+      psmisc
+      procps
+      inotify-tools
 
-      pcsx2
-      unixtools.netstat
-
-      fastnetmon-advanced
-
-      rzls
-      icu
-
-      nuget
-      nuget-to-json
-      mono
-      gnumake
+      # File Management
+      xfce.thunar
+      xfce.tumbler
+      ranger
+      lf
+      walk
+      tree
+      unrar
+      unzip
+      gnutar
+      udisks
+      udiskie
       parted
       gparted
 
+      # System Monitoring & Tools
+      htop
+      btop
+      atop
+      pavucontrol
+      brightnessctl
+      gnome-system-monitor
+      gnome-extension-manager
+      gnome-tweaks
+      font-manager
+      man-pages
+      glib
 
-      #reverse engineering ??
-      radare2
+      # Graphics & Media
+      feh
+      imagemagick
+      swappy
+      grim
+      slurp
+      sway-contrib.grimshot
+      kooha
+      vlc
+      mpv
+      mpd
+      mpdris2
+      playerctl
+      cava
+      spotify
+      gammastep
 
-      #networking tools
+      # Networking
+      git
+      git-lfs
+      wget
       httpie
       darkstat
       freeradius
@@ -41,94 +91,40 @@
       nload
       slurm-nm
       tcpdump
-      atop
-
-      pgcli
-
-
-      fzf
-      feh
-      jump
-      swappy
-      grim
-      gnome-tweaks
-
-      bat
-
-      lxqt.lxqt-policykit
-
-      gnome-system-monitor
-      gnome-extension-manager
-
-      # sddm theme
-      sddm-astronaut
-
-      wayland
-      unrar
-      brightnessctl
-      xfce.thunar
-
-      git
-      xfce.tumbler
-
-      inotify-tools
-      swww
-      font-manager
-      btop
-      cava
-      man-pages
-
-      udisks
-      psmisc
-      udiskie
-      libnotify
-      ghostty
-
-      pulseaudio
-      vlc
-      gammastep
-
-      neovim
-      mpd
-      mpv
-      wl-clipboard
-      slurp
-      walk
-      tmux
-      playerctl
-      fish
-      starship
-      gnutar
-
-      wofi
-
-      ranger
-      lf
-      tree
-      spotify
-      tree-sitter
-      alacritty
-
-      cliphist
-      unzip
-      gtk3
-      jq
       wirelesstools
-      libpq
+      iwgtk
+      fastnetmon-advanced
+      unixtools.netstat
 
-      rofi
-
-      #programming
+      # Programming & Development
+      python3
+      go
+      gopls
+      nodejs
       typescript
       yarn
-      nodejs
+      jdk
+      mono
+      nuget
+      nuget-to-json
+      neovim
+      tree-sitter
+      ctags
+      global
+      stylua
 
-      # C++ programming deps
+      # C++ Programming & Build Tools
       llvmPackages_20.clang-tools
       lldb_21
       gcc
-      cgdb
-      gdb-dashboard
+      gnumake
+      cmakeCurses
+      ninja
+      pkg-config
+      bear
+      meson-tools
+      include-what-you-use
+      libtool
       gtest
       catch2
       boost
@@ -143,32 +139,25 @@
       perf-tools
       systemtap-sdt
       cpplint
-
-      #binary analysis
-      binutils
-
-      #docs
+      clang-manpages
       doxygen
       natural-docs
 
-      #build tools
-      cmakeCurses
-      ninja # Build backend
-      pkg-config # Package discovery
-      bear
-      meson-tools
-      include-what-you-use
+      radare2
+      binutils
+      nchat
 
-      # other tools
-      jdk
-      libtool
+      # Databases
+      pgcli
+      libpq
 
-      #debuggings
-      git-lfs
-      ctags
-      global
-
-      go
+      rzls
+      icu
+      xorg.xev
+      xbanish
+      delta
+      sddm-astronaut
+      gtk3
       stylua
       # ocaml
       # ocaml-top
@@ -177,9 +166,9 @@
 
       # cisco packet tracer
       /*
- #        (ciscoPacketTracer8.override {
-  #      packetTracerSource = ../ciscoPacketTracer/CiscoPacketTracer822_amd64_signed.deb;
-   #   })
+      #        (ciscoPacketTracer8.override {
+       #      packetTracerSource = ../ciscoPacketTracer/CiscoPacketTracer822_amd64_signed.deb;
+        #   })
       */
 
       /*

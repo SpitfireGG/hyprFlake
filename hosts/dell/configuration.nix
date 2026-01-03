@@ -4,7 +4,7 @@
     ./hardware-configuration.nix
 
     # cisco-packet-tracer
-    ../../modules/packetTracerByp.nix
+    #   ../../modules/packetTracerByp.nix
 
     #system configurations
     ../../modules/nixos/system/boot.nix
@@ -54,8 +54,6 @@
       };
     };
   };
-
-  # Add your user to libvirtd group
 
   users.users.archbishop.extraGroups = ["libvirtd"];
   users.extraGroups.vboxusers.members = ["archbishop"];

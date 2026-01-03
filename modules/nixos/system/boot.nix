@@ -2,14 +2,11 @@
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [
-      "i915.enable_guc=0"
-      "i915.enable_fbc=-1"
+      "splash"
       "i915.enable_psr=0"
-      "i915.modeset=1"
-      "intel_iommu=on"
-      "acpi.battery_check=0"
-      "acpi_battery_supress_warning=1"
-      "quiet"
+      "nvidia-drm.modeset=1"
+      "ipv6.disable=1"
+      "audit=0"
     ];
     loader = {
       systemd-boot.enable = true;
@@ -17,9 +14,9 @@
     };
   };
   environment.systemPackages = with pkgs; [
-    mesa-demos # glxinfo, glxgears
-    vulkan-tools # vulkaninfo, vkcube
-    clinfo # OpenCL info
-    intel-gpu-tools # Intel GPU utilities
+    mesa-demos
+    vulkan-tools
+    clinfo
+    intel-gpu-tools
   ];
 }

@@ -3,6 +3,7 @@
     xserver = {
       displayManager.lightdm.enable = false;
       displayManager.autoLogin.enable = false;
+      videoDrivers = ["nvidia"];
       enable = false;
       dpi = 106;
       xkb.layout = "us";
@@ -16,14 +17,13 @@
         role = "relay";
       };
       settings = {
-        ContactInfo = "KPoliRandiKoXoro@gmail.com";
-        Nickname = "Randi oli";
+        ContactInfo = "";
+        Nickname = "archb";
         ORPort = 9001;
         ControlPort = 9051;
         BandWidthRate = "1 MBytes";
       };
     };
-    # add postgresql
     postgresql = {
       enable = true;
       ensureDatabases = ["archdb"];
@@ -43,6 +43,10 @@
       settings = {
         port = 3232;
       };
+    };
+    mysql = {
+      enable = true;
+      package = pkgs.mariadb;
     };
 
     fwupd.enable = true;
