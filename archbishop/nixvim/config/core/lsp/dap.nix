@@ -58,7 +58,7 @@
 
     # Virtual text for debugging
     dap-virtual-text = {
-      enable = true;
+      enable = false;
       settings = {
         enabled = true;
         enabled_commands = true;

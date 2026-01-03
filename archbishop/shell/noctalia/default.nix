@@ -11,16 +11,20 @@
         position = "top";
         backgroundOpacity = 0.85;
         monitors = [];
-        density = "default";
+        density = "mini";
         showCapsule = false;
         floating = true;
-        marginVertical = 0.40;
-        marginHorizontal = 1;
+        marginVertical = 0.30;
+        marginHorizontal = 0.40;
         widgets = {
           left = [
             {
               id = "SidePanelToggle";
               useDistroLogo = true;
+            }
+            {
+              id = "Spacer";
+              Width = 30;
             }
             {
               hideUnoccupied = false;
@@ -31,10 +35,12 @@
           center = [
             {
               id = "MediaMini";
+              maxWidth = 300;
+              useFixedWidth = false;
               hideAutomatically = false;
               showAlbumArt = true;
               showVisualizer = true;
-              visualizerType = "mirrored";
+              visualizerType = "wave";
               scrollingMode = "always";
             }
           ];
@@ -57,6 +63,9 @@
               alwaysShowPercentage = true;
               id = "Battery";
               warningThreshold = 30;
+            }
+            {
+              id = "SystemMonitor";
             }
             {
               id = "Notification";
@@ -104,10 +113,10 @@
       };
       wallpaper = {
         enabled = true;
-        directory = "/home/archbishop/Pictures/anime/okay";
+        directory = "/home/archbishop/Pictures/anime/anime_wallpapers";
         enableMultiMonitorDirectories = false;
         setWallpaperOnAllMonitors = true;
-        defaultWallpaper = "/home/archbishop/Pictures/anime/okay/Zoro.jpg";
+        defaultWallpaper = "/home/archbishop/Pictures/anime/anime_wallpapers/1274337.jpg";
         fillMode = "crop";
         fillColor = "#000000";
         randomEnabled = false;
@@ -130,7 +139,7 @@
         position = "close_to_bar_button";
       };
       dock = {
-        displayMode = "always_visible";
+        enabled = false;
         backgroundOpacity = 1;
         floatingRatio = 1;
         onlySameOutput = true;

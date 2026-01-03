@@ -7,7 +7,6 @@
       };
       messages = {
         enabled = true;
-        # Filter out common save/write messages
         view_error = "mini";
         view_warn = "mini";
         view_history = "messages";
@@ -21,16 +20,15 @@
           enabled = false;
           view = "mini";
         };
-        # Suppress LSP hover/signature help popups during typing
         hover = {
           enabled = true;
-          silent = true; # Don't show "No information available"
+          silent = false; # Don't show "No information available"
         };
         signature = {
           enabled = true;
           auto_open = {
             enabled = true;
-            trigger = false; # Don't auto-open on typing
+            trigger = true; # Don't auto-open on typing
           };
         };
       };
@@ -62,7 +60,9 @@
             kind = "";
             find = "written";
           };
-          opts = {skip = true;};
+          opts = {
+            skip = true;
+          };
         }
       ];
       format = {

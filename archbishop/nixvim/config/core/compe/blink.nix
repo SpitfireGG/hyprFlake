@@ -177,9 +177,8 @@ in {
           };
 
           menu = {
-            border = "single";
-            # Add auto_show configuration
             auto_show = true;
+            border = "rounded";
 
             draw = {
               gap = 1;
@@ -199,7 +198,7 @@ in {
             update_delay_ms = 50;
             treesitter_highlighting = true; # Enable for better syntax highlighting
             window = {
-              border = "single";
+              border = "rounded";
               scrollbar = true;
             };
           };

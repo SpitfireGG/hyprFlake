@@ -35,7 +35,6 @@ in {
       go
       gopls
       playerctl
-      mpc-cli
       neovim
       xdg-desktop-portal
       xorg.xev
@@ -52,6 +51,7 @@ in {
     pointerCursor = {
       gtk.enable = true;
 
+      # x11.enable = true;
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Classic";
       size = 14;
@@ -64,11 +64,10 @@ in {
       enable = true;
     };
     home-manager.enable = true;
-
-    # hyprlock
     hyprlock = {
       enable = true;
       settings = {
+        # Global settings
         general = {
           disable_loading_bar = true;
           grace = 0;
@@ -77,10 +76,11 @@ in {
           no_fade_out = false;
         };
 
+        # Background configuration - Stunning gradient with blur
         background = [
           {
             monitor = "";
-            path = "/home/archbishop/Pictures/anime/okay/Click.jpg";
+            path = "screenshot"; # Use current screen as base
             blur_passes = 3;
             blur_size = 8;
             noise = 0.0117;
@@ -91,6 +91,7 @@ in {
           }
         ];
 
+        # Main input field - Beautiful glassmorphism design
         input-field = [
           {
             monitor = "";
@@ -124,7 +125,9 @@ in {
           }
         ];
 
+        # Elegant time display
         label = [
+          # Main time display
           {
             monitor = "";
             text = "cmd[update:1000] echo \"<span font_family='Work Sans' font_weight='light' font_size='72pt' foreground='##f2f3f4dd'>$(date +'%H:%M')</span>\"";
@@ -138,7 +141,7 @@ in {
             halign = "center";
             valign = "center";
           }
-
+          # Elegant date display
           {
             monitor = "";
             text = "cmd[update:1000] echo \"<span font_family='Work Sans' font_weight='normal' font_size='14pt' foreground='##f2f3f499'>$(date +'%A, %B %d, %Y')</span>\"";
@@ -149,7 +152,7 @@ in {
             halign = "center";
             valign = "center";
           }
-
+          # Weather widget (requires weather script)
           {
             monitor = "";
             text = "cmd[update:300000] ~/.config/hypr/scripts/weather.sh";
@@ -160,7 +163,7 @@ in {
             halign = "left";
             valign = "top";
           }
-
+          # System info
           {
             monitor = "";
             text = "cmd[update:5000] echo \"<span font_family='JetBrainsMono Nerd Font' font_size='10pt' foreground='##f2f3f477'>  $(cat /proc/loadavg | awk '{print $1}') |  $(free -h | awk 'NR==2{print $3\"/\"$2}') | 󰔟 $(uptime -p | sed 's/up //')</span>\"";
@@ -171,7 +174,7 @@ in {
             halign = "right";
             valign = "top";
           }
-
+          # User greeting
           {
             monitor = "";
             text = "cmd[update:1000] echo \"<span font_family='Work Sans' font_weight='light' font_size='16pt' foreground='##f2f3f488'>Welcome back, $(whoami)</span>\"";
@@ -182,7 +185,7 @@ in {
             halign = "center";
             valign = "center";
           }
-
+          # Inspirational quote (requires quote script)
           {
             monitor = "";
             text = "cmd[update:3600000] ~/.config/hypr/scripts/quote.sh";
@@ -193,7 +196,7 @@ in {
             halign = "center";
             valign = "center";
           }
-
+          # Failed attempts counter
           {
             monitor = "";
             text = "cmd[update:2000] ATTEMPTS=$(cat /tmp/hyprlock_failed_attempts 2>/dev/null || echo 0); [ $ATTEMPTS -gt 0 ] && echo \"<span font_family='Work Sans' foreground='##cc2222'>Failed attempts: $ATTEMPTS</span>\" || echo \"\"";
@@ -206,12 +209,14 @@ in {
           }
         ];
 
+        # Floating aesthetic elements
         image = [
+          # Logo/Avatar circle
           {
             monitor = "";
-            path = "~/.face";
+            path = "~/.face"; # Or use a custom logo
             size = 120;
-            rounding = 60;
+            rounding = 60; # Perfect circle
             border_size = 3;
             border_color = "rgba(242, 243, 244, 0.2)";
             rotate = 0;
@@ -224,7 +229,7 @@ in {
             shadow_size = 5;
             shadow_color = "rgba(0, 0, 0, 0.3)";
           }
-
+          # Decorative floating elements
           {
             monitor = "";
             path = "~/.config/hypr/assets/floating-element.png";
@@ -251,7 +256,9 @@ in {
           }
         ];
 
+        # Animated shapes for extra flair
         shape = [
+          # Large subtle background circle
           {
             monitor = "";
             size = "800, 800";
@@ -265,7 +272,7 @@ in {
             halign = "center";
             valign = "center";
           }
-
+          # Accent shape top left
           {
             monitor = "";
             size = "300, 300";
@@ -278,7 +285,7 @@ in {
             halign = "center";
             valign = "center";
           }
-
+          # Accent shape bottom right
           {
             monitor = "";
             size = "200, 200";
@@ -297,7 +304,7 @@ in {
     nushell = {
       enable = false;
       configFile.source = /home/archbishop/.config/nushell/config.nu;
-
+      # for editing directly to config.nu
       shellAliases = {
         nvim = "/home/archbishop/hyprnix/nixos-config/archbishop/nixvim/result/bin/nvim";
       };
@@ -322,12 +329,13 @@ in {
     bash.enable = true;
     direnv.enable = true;
     fzf.enable = true;
+    # Create required scripts and assets directory
   };
   gtk = {
     enable = true;
     theme = {
-      package = pkgs.gruvbox-gtk-theme;
-      name = "gruvbox-dark";
+      package = pkgs.gruvbox-gtk-theme; # The package that provides the theme
+      name = "gruvbox-dark"; # The name of the theme
     };
     iconTheme = {
       package = pkgs.reversal-icon-theme;

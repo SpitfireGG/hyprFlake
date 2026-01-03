@@ -1,3 +1,4 @@
+{ ... }:
 {
   hardware = {
     bluetooth.enable = true;
@@ -11,5 +12,12 @@
         IdleTimeout = 50;
       };
     };
+    graphics.enable = true;
   };
+
+
+
+
+
+
 }

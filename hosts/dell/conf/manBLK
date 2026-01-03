@@ -1,0 +1,3 @@
+/dev/nvme0n1p3: LABEL="nixos" UUID="36d2d4d0-3874-49d7-995c-d2ab98c3221a" BLOCK_SIZE="4096" TYPE="ext4" PARTLABEL="Linux filesystem" PARTUUID="05554481-cc2e-4858-a9cd-6b17b97118e7"
+/dev/nvme0n1p1: LABEL_FATBOOT="BOOT" LABEL="BOOT" UUID="F4FB-BF3F" BLOCK_SIZE="512" TYPE="vfat" PARTLABEL="EFI system partition" PARTUUID="f4d510d4-a76d-43d4-8da3-ec1dc403e12f"
+/dev/nvme0n1p2: LABEL="swap" UUID="116e89be-4213-4a2c-98f4-2ce544164c88" TYPE="swap" PARTLABEL="Linux swap" PARTUUID="9db25ddd-cc2b-4c43-b40b-cf070dfb26cb"

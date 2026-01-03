@@ -39,7 +39,7 @@
       servers = {
         eslint.enable = false;
         qmlls = {
-          enable = true;
+          enable = false;
           cmd = ["${pkgs.qt6.qtdeclarative}/bin/qmlls"];
           filetypes = [
             "qml"
@@ -73,12 +73,20 @@
             "tsx"
           ];
         };
+        tailwindcss.enable = true;
         html.enable = true;
-        clangd.enable = true;
+        clangd = {
+          enable = true;
+          rootMarkers = [
+            "compile_commands.json"
+            ".clangd"
+            ".clang-format"
+          ];
+        };
 
         # Optimized OmniSharp configuration
         omnisharp = {
-          enable = true;
+          enable = false;
           settings = {
             enableMsBuildLoadProjectsOnDemand = true;
             enableImportCompletion = true;
@@ -119,7 +127,7 @@
           };
         };
 
-        yamlls.enable = true;
+        yamlls.enable = false;
 
         # Choose ONE Nix LSP - nixd is more modern
         nixd = {

@@ -2,11 +2,9 @@
   config,
   lib,
   ...
-}:
-let
-  colors = import ../config/colors/${config.theme}.nix { };
-in
-{
+}: let
+  colors = import ../config/colors/${config.theme}.nix {};
+in {
   config = {
     highlight = {
       TablineFill = {
@@ -51,10 +49,9 @@ in
         bg = "none"; # Transparent selection
       };
 
-      # Completion Menu - Made fully transparent
       Pmenu = {
         fg = "none";
-        bg = "none"; # Transparent popup menu
+        bg = "none";
       };
       Pumblend = {
         fg = "none";
@@ -109,13 +106,11 @@ in
         bg = "none"; # Transparent search popup border
       };
 
-      # Additional transparent highlights for better integration
       WinSeparator = {
         fg = "none";
         bg = "none";
       };
 
-      # Make LSP diagnostic floats transparent
       DiagnosticFloatingError = {
         fg = colors.base08;
         bg = "none";
@@ -135,12 +130,12 @@ in
 
       # Make hover documentation transparent
       LspInfoBorder = {
-        fg = colors.base01;
+        fg = colors.base02;
         bg = "none";
       };
     };
     extraConfigLua = ''
-                  vim.api.nvim_set_hl(0, "TabLineFill", { bg = "none" })
+      vim.api.nvim_set_hl(0, "TabLineFill", { bg = "none" })
       vim.api.nvim_set_hl(0, "TabLine", { bg = "none" })
       vim.api.nvim_set_hl(0, "TabLineSel", { bg = "none" })
     '';

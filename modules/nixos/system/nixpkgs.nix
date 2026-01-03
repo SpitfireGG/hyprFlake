@@ -10,6 +10,8 @@
       "spotify"
       "discord"
       "openssl-1.1.1w"
+      "libxml2-2.13.8"
+      "ciscoPacketTracer8-8.2.2"
     ];
     config.allowUnfree = true;
     config.input-fonts.acceptLicense = true;

@@ -1,0 +1,40 @@
+{
+  "payload": {
+    "name": "raambasnet02@gmail.com",
+    "email": "raambasnet02@gmail.com",
+    "licenses": [
+      {
+        "id": "96-CBED-2F29-F5",
+        "owner": "raambasnet02@gmail.com",
+        "product_id": "IDAFREE",
+        "edition_id": "ida-free",
+        "description": "IDA Free PC",
+        "start_date": "2025-04-02",
+        "end_date": "2026-04-02",
+        "issued_on": "2025-04-02 14:36:43",
+        "license_type": "named",
+        "seats": 1,
+        "add_ons": [
+          {
+            "id": "97-D42D-215F-87",
+            "code": "HEXCX64",
+            "owner": "96-CBED-2F29-F5",
+            "start_date": "2025-04-02",
+            "end_date": "2026-04-02"
+          },
+          {
+            "id": "97-539F-9FBB-C4",
+            "code": "HEXCX86",
+            "owner": "96-CBED-2F29-F5",
+            "start_date": "2025-04-02",
+            "end_date": "2026-04-02"
+          }
+        ]
+      }
+    ]
+  },
+  "header": {
+    "version": 1
+  },
+  "signature": "E151140477A5B9B7A727DBC83894AE417525FA1A61E7A646546883D57D464BF2B67302C9244117CE5FD283A34D0CAB01599DA6649E081D852FA45BDF90A3A5A7126D36C55CB92AD977DBE68DAC57047C2F7523A4A8C25D13CBDDFEDC903B52B06EF1194F78EE023588C88FD492CC973DBD9230BD4F8CC299D20E3D7DCBF48B58"
+}

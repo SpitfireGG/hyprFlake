@@ -1,5 +1,4 @@
-{ inputs, ... }:
-{
+{}: {
 
   nixpkgs.overlays = [
     (self: super: {
@@ -7,8 +6,6 @@
         mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
       });
     })
-    (final: prev: {
-      neovim = inputs.nixvim.packages.${prev.system}.default;
-    })
+    (final: prev: { extendedWaybar = final.waybar; })
   ];
 }

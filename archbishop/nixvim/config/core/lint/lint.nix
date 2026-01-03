@@ -39,9 +39,6 @@
         golangcilint = {
           cmd = lib.getExe pkgs.golangci-lint;
         };
-        jsonlint = {
-          cmd = lib.getExe pkgs.nodePackages.jsonlint;
-        };
         luacheck = {
           cmd = lib.getExe pkgs.luaPackages.luacheck;
         };

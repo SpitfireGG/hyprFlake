@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+{config, ...}: {
   imports = [
     #hardware-configuration
     ./hardware-configuration.nix
@@ -34,18 +33,30 @@
     ../../modules/nixos/system/gaming.nix
 
     #styling
-
-    #    ../../overlays/firefox-nightly.nix
   ];
   hardware.opengl.enable = true;
   gaming.enable = true;
 
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.libvirtd.enable = true;
-  virtualisation.spiceUSBRedirection.enable = true;
+  virtualisation.virtualbox.host.enable = false;
+  virtualisation.libvirtd.enable = false;
+  virtualisation.spiceUSBRedirection.enable = false;
+  virtualisation = {
+    docker = {
+      enable = true;
+      daemon.settings = {
+        log-driver = "journald";
+        registry-mirrors = ["https://mirror.gcr.io"];
+        storage-driver = "overlay2";
+      };
+      rootless = {
+        enable = true;
+        setSocketVariable = true;
+      };
+    };
+  };
 
   # Add your user to libvirtd group
 
-  users.users.archbishop.extraGroups = [ "libvirtd" ];
-  users.extraGroups.vboxusers.members = [ "archbishop" ];
+  users.users.archbishop.extraGroups = ["libvirtd"];
+  users.extraGroups.vboxusers.members = ["archbishop"];
 }

@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   xdg = {
     portal = {
       enable = true;
@@ -11,12 +10,14 @@
   };
 
   security.rtkit.enable = true;
-
-  qt = {
-    enable = true;
-    platformTheme = "gtk2";
-    style = "gtk2";
+  security.wrappers.dumpcap = {
+    source = "${pkgs.wireshark}/bin/dumpcap";
+    capabilities = "cap_net_raw,cap_net_admin+eip";
+    owner = "root";
+    group = "root";
+    permissions = "u+rx,g+x";
   };
+  users.users.archbishop.extraGroups = [ "wireshark" ];
 
   documentation = {
     nixos.enable = true;
@@ -26,5 +27,4 @@
   };
 
   system.stateVersion = "23.05";
-
 }

@@ -2,8 +2,7 @@
   lib,
   pkgs,
   ...
-}:
-{
+}: {
   plugins.conform-nvim = {
     enable = true;
     settings = {
@@ -39,41 +38,41 @@
           "prettierd"
           "prettier"
         ];
-        go = [ "gofmt" ];
+        go = ["gofmt"];
         json = [
           "prettierd"
           "prettier"
         ];
 
         # System languages
-        c = [ "clang_format" ];
-        cpp = [ "clang_format" ];
-        cs = [ "csharpier" ];
+        c = ["clang_format"];
+        cpp = ["clang_format"];
+        cs = ["csharpier"];
 
         # Scripting languages
         python = [
           "black"
           "isort"
         ];
-        lua = [ "stylua" ];
-        bash = [ "shfmt" ];
-        sh = [ "shfmt" ];
+        lua = ["stylua"];
+        bash = ["shfmt"];
+        sh = ["shfmt"];
 
         # Config/markup languages
-        nix = [ "alejandra" ];
+        nix = ["alejandra"];
         markdown = [
           "prettierd"
           "prettier"
         ];
-        yaml = [ "prettier" ];
-        toml = [ "taplo" ];
+        yaml = ["prettier"];
+        toml = ["taplo"];
 
         # Database
-        sql = [ "sqlfluff" ];
-        postgresql = [ "pg_format" ];
+        sql = ["sqlfluff"];
+        postgresql = ["pg_format"];
 
         # Assembly
-        asm = [ "asmfmt" ];
+        asm = ["asmfmt"];
       };
 
       formatters = {
@@ -154,12 +153,6 @@
     # Assembly formatter
     asmfmt
   ];
-
-  # LSP servers that provide formatting
-  plugins.lsp.servers = {
-    omnisharp.enable = true; # C# LSP with formatting support
-    clangd.enable = true; # C/C++ LSP with formatting support
-  };
 
   plugins.conform-nvim.settings = {
     format_on_save = {

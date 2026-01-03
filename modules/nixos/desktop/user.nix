@@ -1,9 +1,10 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   users = {
-    users.kenzo = {
+    defaultUserShell = pkgs.fish;
+    users.archbishop = {
       isNormalUser = true;
-      home = "/home/kenzo";
+      home = "/home/archbishop";
+      initialPassword = "archbishop";
       shell = pkgs.fish;
       description = "nixos";
       extraGroups = [
@@ -11,9 +12,7 @@
         "wheel"
         "audio"
         "video"
-        "wireshark"
       ];
     };
   };
-
 }

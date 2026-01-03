@@ -3,32 +3,25 @@
   lib,
   inputs,
   ...
-}:
-let
-  getAllNixFiles =
-    dir:
-    let
-      entries = builtins.readDir dir;
+}: let
+  getAllNixFiles = dir: let
+    entries = builtins.readDir dir;
 
-      processEntry =
-        name: type:
-        let
-          path = dir + "/${name}";
-        in
-        if type == "directory" && name != "colors" && name != "specific" then
-          getAllNixFiles path
-        else if type == "regular" && lib.hasSuffix ".nix" name && name != "default.nix" then
-          [ path ]
-        else
-          [ ];
-
-      allEntries = lib.mapAttrsToList processEntry entries;
+    processEntry = name: type: let
+      path = dir + "/${name}";
     in
+      if type == "directory" && name != "colors" && name != "specific"
+      then getAllNixFiles path
+      else if type == "regular" && lib.hasSuffix ".nix" name && name != "default.nix"
+      then [path]
+      else [];
+
+    allEntries = lib.mapAttrsToList processEntry entries;
+  in
     lib.flatten allEntries;
 
   nixFiles = getAllNixFiles ./.;
-in
-{
+in {
   imports = nixFiles;
 
   options = {
@@ -53,9 +46,10 @@ in
   };
 
   config = {
-    theme = "paradise";
+    theme = "decay";
     extraConfigLua = ''
       _G.theme = "${config.theme}"
+
     '';
   };
 }

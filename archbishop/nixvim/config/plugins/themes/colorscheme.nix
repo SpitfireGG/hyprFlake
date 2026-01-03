@@ -2,18 +2,17 @@
   config,
   lib,
   ...
-}:
-let
-  lua = x: { __raw = x; };
-in
-{
+}: let
+  lua = x: {__raw = x;};
+in {
   colorschemes = {
     base16 = {
       enable = false;
       setUpBar = false;
       colorscheme = "gruvbox-dark-hard";
     };
-    gruvbox-material = {
+
+    gruvbox-material-nvim = {
       enable = true;
       settings = {
         background = {
@@ -22,14 +21,14 @@ in
         comments = {
           italics = true;
         };
-        contrast = "hard";
+        italics = true;
+        contrast = "medium";
         customize = lib.nixvim.mkRaw ''
           function(g, o)
             local colors = require("gruvbox-material.colors").get(vim.o.background, "medium")
             if g == "CursorLineNr" then
-              o.link = nil            -- wipe a potential link, which would take precedence over other
-                                      -- attributes
-              o.fg = colors.orange    -- or use any color in "#rrggbb" hex format
+              o.link = nil
+              o.fg = colors.orange
               o.bold = true
             end
             return o
@@ -38,12 +37,12 @@ in
         float = {
           force_background = false;
         };
-        italics = false;
         signs = {
           force_background = false;
         };
       };
     };
+
     ayu = {
       enable = false;
       settings.mirage = false;
@@ -220,10 +219,10 @@ in
               background = true;
             };
             underlines = {
-              errors = [ "underline" ];
-              hints = [ "underline" ];
-              information = [ "underline" ];
-              warnings = [ "underline" ];
+              errors = ["underline"];
+              hints = ["underline"];
+              information = ["underline"];
+              warnings = ["underline"];
             };
           };
         };
