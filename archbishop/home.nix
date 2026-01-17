@@ -1,8 +1,6 @@
 {
   inputs,
   pkgs,
-  config,
-  lib,
   ...
 }: let
   username = "archbishop";
@@ -10,6 +8,7 @@
 in {
   imports = [
     inputs.noctalia.homeModules.default
+    #inputs.caelestia-shell.homeManagerModules.default
     ./shell/noctalia/default.nix
   ];
 
@@ -30,12 +29,34 @@ in {
   };
 
   programs = {
+    /*
+       caelestia = {
+      enable = false;
+      systemd = {
+        enable = true;
+        target = "graphical-session.target";
+        environment = [];
+      };
+      settings = {
+        bar.status = {
+          showBattery = true;
+        };
+        paths.wallpaperDir = "~/Pictures/anime/okay/anime/";
+      };
+      cli = {
+        enable = true;
+        settings = {
+          theme.enableGtk = true;
+        };
+      };
+    };
+    */
     nixvim = {
       enable = true;
     };
     home-manager.enable = true;
     hyprlock = {
-      enable = true;
+      enable = false;
       settings = {
         general = {
           disable_loading_bar = true;
@@ -48,7 +69,7 @@ in {
         background = [
           {
             monitor = "";
-            path = "~/Pictures/anime/okay/thiccer.jpeg";
+            path = "~/Pictures/anime/okay/thicc.jpg";
             blur_passes = 3;
             blur_size = 8;
             noise = 0.0117;
@@ -274,9 +295,9 @@ in {
     carapace.enableNushellIntegration = false;
     git = {
       enable = true;
-      userName = "SpitfireGG";
-      userEmail = "raambasnet02@gmail.com";
-      extraConfig = {
+      settings = {
+        user.name = "SpitfireGG";
+        user.email = "raambasnet02@gmail.com";
         init.defaultBranch = "main";
         pull.rebase = true;
         core.pager = "${pkgs.delta}/bin/delta";
@@ -286,20 +307,8 @@ in {
         merge.conflictStyle = "zdiff3";
       };
     };
-    bash.enable = true;
     direnv.enable = true;
     fzf.enable = true;
-  };
-  gtk = {
-    enable = true;
-    theme = {
-      package = pkgs.gruvbox-gtk-theme;
-      name = "gruvbox-dark";
-    };
-    iconTheme = {
-      package = pkgs.reversal-icon-theme;
-      name = "Reversal-dark";
-    };
   };
 
   fonts.fontconfig.enable = true;
