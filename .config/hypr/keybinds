@@ -10,10 +10,9 @@ bindl = Alt, P,exec,   pavucontrol
 bindl = ALT,S, exec, shutdown
 bind = $mainMod, K, togglesplit
 bind = $mainMod, A, exec, alacritty
-bind = $mainMod, G, exec, $HOME/.config/waybar/scripts/gaming_disable.sh
+bind = $mainMod, G, exec, altus
 
 bind = $mainMod, E, exec, thunar
-bind = $mainMod, return, exec, $HOME/Dev/bash/dmenu_scripts/opacityHandler.sh
 bind = $mainMod, Y, exec, /home/archbishop/Dev/bash/dmenu_scripts/calc.sh
 bind = $mainMod, F, exec, firefox-devedition
 bind = $mainModShift,F , exec, firefox-devedition --private-window 
@@ -53,10 +52,7 @@ bindl = ,XF86MonBrightnessDown,exec, brightnessctl set 1%-
 
 bind = SuperShift, N, exec, playerctl next || playerctl position `bc <<< "100 * $(playerctl metadata mpris:length) / 1000000 / 100"`
 bind = SuperShift, B, exec, playerctl previous
-bind = SuperShift, P, exec, playerctl play-pause
-
-
-
+bind = SuperShift, P, exec, playerctl play-pausekeybind
 
 ## dmenu
 #bind = $mainMod, backspace, exec, wlogout --protocol layer-shell # logout menu
@@ -76,10 +72,5 @@ bind = SUPER, V, exec,  noctalia-shell ipc call brightness decrease
 bind = SUPER, B, exec,  noctalia-shell ipc call brightness increase
 bind = SUPER, H, exec,  noctalia-shell ipc call launcher clipboard
 bind = SUPER, C, exec,  noctalia-shell ipc call launcher calculator
-bind = SUPER, L, exec,  noctalia-shell ipc call lockScreen toggle
+bind = SUPER, L, exec,  noctalia-shell ipc call lockScreen  lock
 bind = SUPER, R, exec,  noctalia-shell ipc call wallpaper random
-
-
-
-
-

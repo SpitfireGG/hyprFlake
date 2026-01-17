@@ -20,7 +20,6 @@ exec-once  = noctalia-shell
 
 exec-once = hyprlock
 
-exec-once =   noctalia-shell ipc call lockScreen toggle
 
 exec-once  = nm-applet 
 
@@ -30,9 +29,9 @@ exec-once = pkill dunst
 
 exec-once = hyprctl setcursor Phinger-Cursors 18
 
-exec-once  = notify-send -a aurora "Ayoo $(whoami), my Nigga !!"  
 
-exec-once  = alacritty -e /home/archbishop/Dev/LL/C/tiny_c_programs/misc/
+# Start the gnome-keyring-daemon
+exec-once = gnome-keyring-daemon --start --components=secrets
 
 
 
