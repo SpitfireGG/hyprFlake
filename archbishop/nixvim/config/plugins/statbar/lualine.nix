@@ -1,4 +1,6 @@
-{
+{config, ...}: let
+  colors = import ../../colors/${config.theme}.nix {};
+in {
   plugins.lualine = {
     enable = true;
     lazyLoad.settings.event = "BufEnter";
@@ -6,50 +8,29 @@
       options = {
         icons_enabled = true;
         component_separators = {
-          left = "";
-          right = "";
+          left = "";
+          right = "";
         };
         section_separators = {
-          left = "";
-          right = "";
+          left = "";
+          right = "";
         };
         theme = {
-          normal = {
-            a = {
-              bg = "none";
-              fg = "#d4be98";
-            };
-            b = {
-              bg = "none";
-              fg = "#a89984";
-            };
-            c = {
-              bg = "none";
-              fg = "#665c54";
-            };
-          };
-          insert = {
-            a = {
-              bg = "none";
-              fg = "#a9b665";
-            };
-          };
-          visual = {
-            a = {
-              bg = "none";
-              fg = "#d3869b";
-            };
-          };
-          replace = {
-            a = {
-              bg = "none";
-              fg = "#ea6962";
-            };
-          };
-          command = {
-            a = {
-              bg = "none";
-              fg = "#89b482";
+          bg = {
+            normal = {
+              a = {
+                fg = colors.base00;
+                bg = colors.base08;
+                gui = "bold";
+              };
+              b = {
+                fg = colors.base05;
+                bg = colors.base01;
+              };
+              c = {
+                fg = colors.base05;
+                bg = colors.base00;
+              };
             };
           };
         };
@@ -83,7 +64,7 @@
         lualine_b = [
           {
             __unkeyed = "branch";
-            icon = "";
+            icon = "";
             padding = {
               left = 1;
               right = 1;
@@ -92,9 +73,9 @@
           {
             __unkeyed = "diff";
             symbols = {
-              added = " ";
-              modified = " ";
-              removed = " ";
+              added = "♯ ";
+              modified = "◆ ";
+              removed = "◈ ";
             };
             padding = {
               left = 1;
@@ -120,10 +101,10 @@
             __unkeyed = "diagnostics";
             sources = ["nvim_diagnostic"];
             symbols = {
-              error = " ";
-              warn = " ";
-              info = " ";
-              hint = " ";
+              error = "♯";
+              warn = "◆";
+              info = "◈";
+              hint = "◇";
             };
             colored = true;
           }

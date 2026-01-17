@@ -1,6 +1,6 @@
 {
   plugins.tailwind-tools = {
-    enable = true;
+    enable = false;
     settings = {
       document_color = {
         conceal = {

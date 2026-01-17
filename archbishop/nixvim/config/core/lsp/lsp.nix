@@ -8,7 +8,64 @@
     cmp = {
       enable = false;
       settings = {
+        autoEnableSources = true;
+        experimental = {
+          ghost_text = true;
+        };
+        performance = {
+          debounce = 60;
+          fetchingTimeout = 200;
+          maxViewEntries = 30;
+        };
         snippet.expand = "function(args) require('luasnip').lsp_expand(args.body) end";
+        formatting = {
+          fields = [
+            "kind"
+            "abbr"
+            "menu"
+          ];
+          format = ''
+            function(entry, vim_item)
+              local kind_icons = {
+                Text = "󰊄",
+                Method = "",
+                Function = "󰡱",
+                Constructor = "",
+                Field = "",
+                Variable = "󱀍",
+                Class = "",
+                Interface = "",
+                Module = "󰕳",
+                Property = "",
+                Unit = "",
+                Value = "",
+                Enum = "",
+                Keyword = "",
+                Snippet = "",
+                Color = "",
+                File = "",
+                Reference = "",
+                Folder = "",
+                EnumMember = "",
+                Constant = "",
+                Struct = "",
+                Event = "",
+                Operator = "",
+                TypeParameter = "",
+              }
+              vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
+              return vim_item
+            end
+          '';
+        };
+        window = {
+          completion = {
+            border = "rounded";
+          };
+          documentation = {
+            border = "rounded";
+          };
+        };
         mapping = {
           "<C-b>" = "cmp.mapping.scroll_docs(-4)";
           "<C-f>" = "cmp.mapping.scroll_docs(4)";
@@ -23,6 +80,7 @@
           {name = "luasnip";}
           {name = "buffer";}
           {name = "path";}
+          {name = "emoji";}
         ];
       };
     };
@@ -82,6 +140,7 @@
             ".clangd"
             ".clang-format"
           ];
+          cmd = ["clangd --background-index --clang-tidy --log=verbose"];
         };
 
         # Optimized OmniSharp configuration
@@ -255,7 +314,7 @@
       border = _border
     }
 
-    local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+    local signs = { Error = " ", Warn = " ", Hint = "󰏫 ", Info = " " }
 
     vim.diagnostic.config({
       signs = {

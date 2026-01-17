@@ -3,8 +3,10 @@
     enable = true;
 
     # Disable netrw (vim's default file explorer) - recommended for nvim-tree
-    disableNetrw = true;
-    hijackNetrw = true;
+    settings = {
+      disable_netrw = true;
+      hijack_netrw = true;
+    };
 
     # Open tree when starting nvim on a directory
     openOnSetup = true;

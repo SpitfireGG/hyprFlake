@@ -46,7 +46,7 @@ in {
   };
 
   config = {
-    theme = "decay";
+    theme = "kanagawa-waves";
     extraConfigLua = ''
       _G.theme = "${config.theme}"
 

@@ -31,22 +31,21 @@ in {
         fg = "none";
       };
 
-      # Telescope - Made transparent
       TelescopePromptBorder = {
         fg = colors.base01;
-        bg = "none"; # Transparent background
+        bg = "none";
       };
       TelescopePromptNormal = {
         fg = "none";
-        bg = "none"; # Transparent background
+        bg = "none";
       };
       TelescopePromptPrefix = {
         fg = colors.base08;
-        bg = "none"; # Transparent background
+        bg = "none";
       };
       TelescopeSelection = {
         fg = "none";
-        bg = "none"; # Transparent selection
+        bg = "none";
       };
 
       Pmenu = {
@@ -63,47 +62,45 @@ in {
       };
       PmenuSbar = {
         fg = "none";
-        bg = "none"; # Transparent scrollbar
+        bg = "none";
       };
       PmenuThumb = {
         fg = "none";
-        bg = "none"; # Transparent scrollbar thumb
+        bg = "none";
       };
       PmenuSel = {
         fg = "none";
         bg = "none";
       };
 
-      # Window borders and floats - Made transparent
       VertSplit = {
         fg = "none";
         bg = "none";
       };
       FloatBorder = {
         fg = "none";
-        bg = "none"; # Transparent float border
+        bg = "none";
       };
       NormalFloat = {
         fg = "none";
-        bg = "none"; # Transparent float window
+        bg = "none";
       };
       LineNr = {
         fg = "none";
         bg = "none";
       };
 
-      # Noice popups - Made transparent
       NoiceCmdlinePopup = {
         fg = colors.base04;
-        bg = "none"; # Transparent command popup
+        bg = "none";
       };
       NoiceCmdlinePopupBorder = {
         fg = colors.base01;
-        bg = "none"; # Transparent popup border
+        bg = "none";
       };
       NoiceCmdlinePopupBorderSearch = {
         fg = colors.base01;
-        bg = "none"; # Transparent search popup border
+        bg = "none";
       };
 
       WinSeparator = {
@@ -128,7 +125,6 @@ in {
         bg = "none";
       };
 
-      # Make hover documentation transparent
       LspInfoBorder = {
         fg = colors.base02;
         bg = "none";

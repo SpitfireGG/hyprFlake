@@ -4,7 +4,7 @@
     settings = {
       auto_scroll = true;
       autochdir = true;
-      close_on_exit = false; # Changed to false to debug shell exit issues
+      close_on_exit = false;
       shade_terminals = true;
       shading_factor = 2;
       start_in_insert = true;
@@ -20,14 +20,14 @@
           gui = "NONE";
         };
       };
-      open_mapping = "[[<c-t>]]"; # Changed from <c-\> to avoid conflict
+      open_mapping = "[[<c-t>]]";
       persist_mode = true;
       persist_size = true;
-      insert_mappings = false; # Disable to prevent toggle loop
-      terminal_mappings = false; # Disable to prevent toggle loop
+      insert_mappings = false;
+      terminal_mappings = false;
 
-      shell = "fish"; # Corrected to use Neovim’s shell
-      size = 10;
+      shell = "fish";
+      size = 12;
       float_opts = {
         border = "single";
         winblend = 0;
@@ -69,7 +69,6 @@
     }
   ];
   extraConfigLua = ''
-    -- Only enable <C-q> for closing, not opening
     vim.keymap.set('t', '<C-q>', '<C-\\><C-n>:ToggleTerm<CR>', { noremap = true, silent = true })
   '';
 }

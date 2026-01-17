@@ -2,24 +2,22 @@
   config,
   lib,
   ...
-}:
-let
-  colors = import ../../colors/${config.theme}.nix { };
-in
-{
+}: let
+  colors = import ../../colors/${config.theme}.nix {};
+in {
   plugins = {
     bufferline = {
       enable = true;
       settings = {
         options = {
-          separatorStyle = "padded_slope";
+          separatorStyle = "slant"; # Sleek slant style
           show_buffer_close_icons = false;
           show_buffer_icons = true;
           show_tab_indicators = false;
           hover = {
             enabled = true;
             delay = 200;
-            reveal = [ "show_buffer_close_icons" ];
+            reveal = ["show_buffer_close_icons"];
           };
 
           offsets = [
@@ -33,31 +31,21 @@ in
           modified_icon = "󰊠";
           show_duplicate_paths = 2;
 
-          /*
-               diagnostics_indicator = {
-              __raw = ''
-                function(count, level, diagnostics_dict, context)
-                  local s = " "
-                  for e, n in pairs(diagnostics_dict) do
-                    local sym = ""
-                    if e == "error" then sym = " "
-                    elseif e == "warn" then sym = " "
-                    elseif e == "info" then sym = " "
-                    elseif e == "hint" then sym = "󰠠 "
-                    end
-                    s = s .. sym .. n .. " "
-                  end
-                  return s
+          diagnostics_indicator = ''
+            function(count, level, diagnostics_dict, context)
+              local s = " "
+              for e, n in pairs(diagnostics_dict) do
+                local sym = ""
+                if e == "error" then sym = " "
+                elseif e == "warn" then sym = " "
+                elseif e == "info" then sym = " "
+                elseif e == "hint" then sym = "󰏫 "
                 end
-              '';
-            };
-          */
-          /*
-               diagnostics_update_on_insert = false;
-            diagnostics_indicator_options = {
-              place = "buffer_name";
-            };
-          */
+                s = s .. sym .. n .. " "
+              end
+              return s
+            end
+          '';
           keymaps = [
             {
               mode = "n";
@@ -154,14 +142,14 @@ in
   };
   highlight = with colors; {
     BufferLineBackground = {
-      bg = base01;
+      bg = "None";
     };
     BufferLineBuffer = {
       bg = base0C;
       fg = base04;
     };
     BufferLineBufferSelected = {
-      bg = base0C;
+      bg = "None";
       fg = base04;
     };
     BufferLineBufferVisible = {
@@ -188,10 +176,10 @@ in
       bg = base01;
     };
     BufferLineFill = {
-      bg = base00;
+      bg = "None";
     };
     BufferLineIndicatorSelected = {
-      bg = base0C;
+      bg = "None";
     };
     BufferLineIndicator = {
       bg = base01;
@@ -199,19 +187,19 @@ in
     BufferLineIndicatorVisible = {
       bg = base01;
     };
-    BufferLineModified = { };
+    BufferLineModified = {};
     BufferLineModifiedSelected = {
       bg = base0C;
     };
     BufferLineModifiedVisible = {
       bg = base01;
     };
-    BufferLineOffsetSeparator = { };
-    BufferLinePick = { };
+    BufferLineOffsetSeparator = {};
+    BufferLinePick = {};
     BufferLinePickSelected = {
       bg = base0C;
     };
-    BufferLinePickVisible = { };
+    BufferLinePickVisible = {};
     BufferLineSeparator = {
       bg = base01;
       fg = base01;
@@ -219,6 +207,6 @@ in
     BufferLineSeparatorSelected = {
       bg = base0C;
     };
-    BufferLineSeparatorVisible = { };
+    BufferLineSeparatorVisible = {};
   };
 }

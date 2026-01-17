@@ -16,4 +16,11 @@
       normalModeSearch = false;
     };
   };
+  extraConfigLua = ''
+    require('grug-far').setup({
+        actions = {
+            sync_all = "<leader>w",
+        }
+    })
+  '';
 }
