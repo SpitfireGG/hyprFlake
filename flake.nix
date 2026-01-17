@@ -11,29 +11,20 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    stylix = {
-      url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     quickshell = {
-      url = "github:outfoxxed/quickshell";
+      url = "github:quickshell-mirror/quickshell"; # ← ADD THIS
       inputs.nixpkgs.follows = "nixpkgs";
     };
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.quickshell.follows = "quickshell"; # Use same quickshell version
     };
-    ags.url = "github:aylur/ags";
-    astal.url = "github:aylur/astal";
   };
 
   outputs = {
     self,
     nixpkgs,
     hm,
-    stylix,
     nixvim,
     ...
   } @ inputs: {
@@ -43,7 +34,7 @@
         specialArgs = {inherit inputs;};
         modules = [
           ./hosts/dell/configuration.nix
-          ./modules/packetTracerByp.nix
+          #     ./modules/packetTracerByp.nix
         ];
       };
     };
@@ -58,7 +49,6 @@
         extraSpecialArgs = {inherit inputs;};
         modules = [
           ./archbishop/home.nix
-          stylix.homeManagerModules.stylix
           nixvim.homeModules.nixvim
         ];
       };

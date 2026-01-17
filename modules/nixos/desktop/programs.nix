@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   programs = {
+    uwsm.enable = true;
     # wireshark.enable = true;
     # fzf.keybindings = true;
     # fzf.fuzzyCompletion = true;
@@ -8,7 +9,9 @@
     hyprland = {
       enable = true;
       withUWSM = true;
+      xwayland.enable = true;
     };
+    seahorse.enable = true;
     fish.enable = true;
     nix-ld.enable = true;
     xwayland.enable = true;

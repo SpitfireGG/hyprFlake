@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   xdg = {
     portal = {
       enable = true;
@@ -10,6 +10,7 @@
   };
 
   security.rtkit.enable = true;
+  security.pam.services.login.enableGnomeKeyring = true;
   security.wrappers.dumpcap = {
     source = "${pkgs.wireshark}/bin/dumpcap";
     capabilities = "cap_net_raw,cap_net_admin+eip";
@@ -17,7 +18,7 @@
     group = "root";
     permissions = "u+rx,g+x";
   };
-  users.users.archbishop.extraGroups = [ "wireshark" ];
+  users.users.archbishop.extraGroups = ["wireshark"];
 
   documentation = {
     nixos.enable = true;
