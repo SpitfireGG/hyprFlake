@@ -6,7 +6,7 @@
   programs.noctalia-shell = {
     enable = true;
     settings = {
-      settingsVersion = 15;
+      settingsVersion = 16;
       bar = {
         position = "top";
         backgroundOpacity = 0.85;
@@ -19,21 +19,6 @@
         widgets = {
           left = [
             {
-              id = "SidePanelToggle";
-              useDistroLogo = true;
-            }
-            {
-              id = "Spacer";
-              Width = 30;
-            }
-            {
-              hideUnoccupied = false;
-              id = "Workspace";
-              labelMode = "none";
-            }
-          ];
-          center = [
-            {
               id = "MediaMini";
               maxWidth = 300;
               useFixedWidth = false;
@@ -42,6 +27,17 @@
               showVisualizer = true;
               visualizerType = "wave";
               scrollingMode = "always";
+            }
+          ];
+          center = [
+            {
+              id = "controlCenter";
+              useDistroLogo = true;
+            }
+            {
+              hideUnoccupied = false;
+              id = "Workspace";
+              labelMode = "none";
             }
           ];
           right = [
@@ -60,16 +56,33 @@
               displayMode = "alwaysShow";
             }
             {
-              alwaysShowPercentage = true;
               id = "Battery";
               warningThreshold = 30;
+              hideIfNotDetected = true;
+              showNoctaliaPerformanceToggle = true;
+              showPowerProfileControls = true;
+              displayMode = "alwaysShow";
             }
             {
               id = "SystemMonitor";
-              CompactMode = false;
+              compactMode = false;
+              cpuUssage = true;
+              cpuTemperature = true;
+              loadAverage = true;
+              memoryUsage = true;
+              memoryAsPercentage = true;
+              networkTraffic = true;
+              storageUsage = true;
+              diskPath = "/";
             }
             {
               id = "Notification";
+            }
+            {
+              id = "NoctaliaPerformance";
+            }
+            {
+              id = "nightLight";
             }
             {
               id = "Spacer";
@@ -86,20 +99,20 @@
         };
       };
       general = {
-        avatarImage = "/home/archbishop/Pictures/113996613.jpg";
-        dimDesktop = true;
+        avatarImage = "/home/archbishop/Dev/personal/cons.jpg";
+        dimDesktop = false;
         showScreenCorners = false;
         forceBlackScreenCorners = false;
         radiusRatio = 1;
         screenRadiusRatio = 1;
         animationSpeed = 1;
-        animationDisabled = false;
+        animationDisabled = true;
       };
       location = {
         name = "Kathmandu";
         useFahrenheit = false;
         use12hourFormat = false;
-        showWeekNumberInCalendar = false;
+        showWeekNumberInCalendar = true;
       };
       screenRecorder = {
         directory = "";
@@ -119,7 +132,7 @@
         setWallpaperOnAllMonitors = true;
         defaultWallpaper = "/home/archbishop/Pictures/anime/anime_wallpapers/1274337.jpg";
         fillMode = "crop";
-        fillColor = "#000000";
+        fillColor = "#ff2f22";
         randomEnabled = false;
         randomIntervalSec = 300;
         transitionDuration = 1500;
@@ -162,7 +175,7 @@
         criticalUrgencyDuration = 15;
       };
       osd = {
-        enabled = true;
+        enabled = false;
         location = "top_right";
         monitors = [];
         autoHideMs = 2000;
@@ -176,7 +189,7 @@
         preferredPlayer = "";
       };
       ui = {
-        fontDefault = "Roboto";
+        fontDefault = "Work Sans";
         fontFixed = "Work Sans";
         fontDefaultScale = 1;
         fontFixedScale = 1;
