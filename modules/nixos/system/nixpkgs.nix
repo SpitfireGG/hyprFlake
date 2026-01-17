@@ -1,6 +1,5 @@
 {
   nixpkgs = {
-    config.pulseaudio = true;
     config.permittedInsecurePackages = [
       "unrar"
       "electron-12.2.3"
@@ -11,7 +10,9 @@
       "discord"
       "openssl-1.1.1w"
       "libxml2-2.13.8"
+      "beekeeper-studio-5.5.3"
       "ciscoPacketTracer8-8.2.2"
+      "beekeeper-studio-5.3.4"
     ];
     config.allowUnfree = true;
     config.input-fonts.acceptLicense = true;

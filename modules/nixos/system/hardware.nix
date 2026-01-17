@@ -1,11 +1,16 @@
-{config, ...}: {
+{config, ...}: let
+  unstable = import <nixos-unstable> {};
+in {
   hardware = {
+    pulseaudio.package = unstable.pulseaudioFull;
+    pulseaudio.enable = false;
     bluetooth.enable = true;
     bluetooth.network = {
       General = {
         DisableSecurity = true;
       };
     };
+
     bluetooth.input = {
       General = {
         IdleTimeout = 50;
