@@ -14,6 +14,10 @@
       libnotify
       lxqt.lxqt-policykit
 
+      #sql
+      beekeeper-studio
+      dbeaver-bin
+
       firefox-devedition
       ghostty
       alacritty
@@ -32,11 +36,10 @@
       inotify-tools
 
       # File Management
-      xfce.thunar
-      xfce.tumbler
+      thunar
+      tumbler
       ranger
       lf
-      walk
       tree
       unrar
       unzip
@@ -110,7 +113,6 @@
       neovim
       tree-sitter
       ctags
-      global
       stylua
 
       # C++ Programming & Build Tools
@@ -135,7 +137,6 @@
       heaptrack
       clang-analyzer
       cppcheck
-      cccc
       perf-tools
       systemtap-sdt
       cpplint
@@ -156,7 +157,6 @@
       xorg.xev
       xbanish
       delta
-      sddm-astronaut
       gtk3
       stylua
       # ocaml
@@ -212,5 +212,6 @@
       EDITOR = "nvim";
       C_include_PATH = "${pkgs.expat.dev}/include";
     };
+    pathsToLink = ["/share/uwsm"];
   };
 }
