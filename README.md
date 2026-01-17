@@ -38,6 +38,7 @@ This repository hosts my personal **NixOS** configuration, built with **Flakes**
 
 \_Hyprland
 <img src="assets/home.png" width="100%" alt="Hyprland Desktop" style="border-radius: 10px;">
+<img src="assets/lock.png" width="100%" alt="Hyprland Desktop" style="border-radius: 10px;">
 
 ### 💻 Development Workflow
 
@@ -59,6 +60,16 @@ _Neovim (Nixvim) with LSP & blink-cmp_
 - **Bar:** noctalia-shell (replaced for waybar).
 - **System:** NixOS Flakes + Home Manager.
 - **Structure:** Modular host/user separation.
+
+---
+
+###  Editor (Nixvim)
+
+- **Nixvim Configuration** - Declarative Neovim setup
+- **Advanced LSP Support** - Nixd, clangd, rust-analyzer, etc.
+- **Blazing Completions** - blink-cmp with luasnip
+- **Themed UI** - Custom colorscheme matching desktop
+  > **NOTE:** You can find the configurations for Neovim (!Nixvim) in NVIM branch but they are very old
 
 ---
 
@@ -85,13 +96,13 @@ The configuration is organized to be modular. System internals are Nixified, whi
 
 ---
 
-# For a fresh install or update
+## For a fresh install or update
 
 ```bash
 sudo nixos-rebuild switch --flake .#<your-hostname>
 ```
 
-# Build nixvim config
+## Build nixvim config
 
 ```bash
 nix build in <your-hostname/nixvim dir>
@@ -102,10 +113,12 @@ nix build in <your-hostname/nixvim dir>
 ### ❤️ Credits
 
     Base: NixOS & Home Manager communities.
-    Tools: Hyprland, Neovim (Nixvim), Waybar.
+    Tools: Hyprland, Neovim (Nixvim), noctalia-shell.
 
 <div align="center">
 
-<i>If you enjoy this config, consider dropping a star! ⭐</i>
+<i>If you enjoy this config, consider dropping a star!
+https://api.visitorbadge.io/api/visitors?path=https://github.com/yourusername/dotfiles&label=Visitors&countColor=%2523263759
+</i>
 
 </div>
