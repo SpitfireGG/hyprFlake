@@ -1,0 +1,195 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+
+{
+    "completion_detail_alignment": "right",
+    "tab_size": 4,
+    "toolbar": {
+        "code_actions": true,
+    },
+    "hover_popover_enabled": true,
+    "lsp_document_colors": "none",
+    "snippet_sort_order": "top",
+    "inlay_hints": {
+        "enabled": true,
+    },
+    "edit_predictions": {
+        "mode": "eager",
+    },
+    "git": {
+        "inline_blame": {
+            "show_commit_summary": true,
+        },
+    },
+    "diagnostics": {
+        "inline": {
+            "enabled": true,
+        },
+    },
+    "buffer_font_family": "Maple Mono NF",
+    "scrollbar": {
+        "show": "never",
+    },
+    "ui_font_size": 16,
+    "ui_font_family": ".SystemUIFont",
+    "buffer_font_size": 14,
+    "theme": {
+        "mode": "dark",
+        "light": "One Dark",
+        "dark": "Kanagawa Wave",
+    },
+    "tabs": {
+        "show_diagnostics": "errors",
+        "file_icons": true,
+        "git_status": false,
+        "close_position": "right",
+    },
+    "terminal": {
+        "toolbar": {
+            "breadcrumbs": false,
+        },
+    },
+
+    "cursor_shape": "block",
+    "buffer_line_height": "comfortable",
+    "relative_line_numbers": "enabled",
+    "vim": {
+        "toggle_relative_line_numbers": true,
+    },
+    "git_panel": {
+        "scrollbar": {
+            "show": "never",
+        },
+        "tree_view": true,
+        "status_style": "icon",
+    },
+    "agent": {
+        "notify_when_agent_waiting": "all_screens",
+        "default_model": {
+            "provider": "zed.dev",
+            "model": "claude-sonnet-4-5",
+        },
+        "favorite_models": [],
+        "model_parameters": [],
+    },
+    "preview_tabs": {
+        "enabled": true,
+    },
+    "tab_bar": {
+        "show_nav_history_buttons": false,
+        "show_tab_bar_buttons": false,
+        "show": true,
+    },
+    "title_bar": {
+        "show_branch_icon": true,
+        "show_project_items": false,
+        "show_onboarding_banner": false,
+        "show_menus": false,
+        "show_user_menu": true,
+    },
+    "project_panel": {
+        "indent_guides": {
+            "show": "always",
+        },
+        "entry_spacing": "standard",
+        "dock": "left",
+        "hide_hidden": true,
+        "button": true,
+    },
+    "prettier": {
+        "allowed": true,
+    },
+    "show_signature_help_after_edits": true,
+    "auto_signature_help": true,
+    "text_rendering_mode": "platform_default",
+    "autosave": {
+        "after_delay": {
+            "milliseconds": 1000,
+        },
+    },
+    "icon_theme": "Zed (Default)",
+    "telemetry": {
+        "diagnostics": false,
+        "metrics": false,
+    },
+    "vim_mode": true,
+    "lsp": {
+        "jdtls": {
+            "settings": {
+                "initialization_options": {
+                    "bundles": [],
+                    "workspaceFolders": [
+                        "file://home/archbishop/Dev/Java/javarch",
+                    ],
+                    "settings": {
+                        "java": {
+                            "home": "/run/current-system/sw/bin/java",
+                            "errors": {
+                                "incompleteClasspath": {
+                                    "severity": "warning",
+                                },
+                            },
+                            "configuration": {
+                                "updateBuildConfiguration": "interactive",
+                                "maven": {
+                                    "userSettings": null,
+                                },
+                            },
+                            "import": {
+                                "gradle": {
+                                    "enabled": true,
+                                },
+                                "maven": {
+                                    "enabled": false,
+                                },
+                                "exclusions": [
+                                    "**/node_modules/**",
+                                    "**/.metadata/**",
+                                    "**/archetype-resources/**",
+                                    "**/META-INF/maven/**",
+                                    "/**/test/**",
+                                ],
+                            },
+                            "referencesCodeLens": {
+                                "enabled": true,
+                            },
+                            "signatureHelp": {
+                                "enabled": true,
+                            },
+                            "implementationCodeLens": "all",
+                            "format": {
+                                "enabled": false,
+                            },
+                            "saveActions": {
+                                "organizeImports": true,
+                            },
+                            "contentProvider": {
+                                "preferred": null,
+                            },
+                            "autobuild": {
+                                "enabled": false,
+                            },
+                            "completion": {
+                                "favoriteStaticMembers": [
+                                    "org.junit.Assert.*",
+                                    "org.junit.Assume.*",
+                                    "org.junit.jupiter.api.Assertions.*",
+                                    "org.junit.jupiter.api.Assumptions.*",
+                                    "org.junit.jupiter.api.DynamicContainer.*",
+                                    "org.junit.jupiter.api.DynamicTest.*",
+                                ],
+                                "importOrder": ["java", "javax", "com", "org"],
+                            },
+                        },
+                    },
+                },
+            },
+        },
+    },
+}

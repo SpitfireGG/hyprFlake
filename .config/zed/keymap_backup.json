@@ -1,0 +1,216 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  // Leader key: Backspace
+  // Note: Zed uses space as default leader, but we'll map backspace combinations
+
+  // Leader + Space: Open file finder (like Telescope find_files)
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "backspace space": "file_finder::Toggle",
+    },
+  },
+
+  // Minus key: Open project panel (similar to oil.nvim file navigation)
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "-": "project_panel::ToggleFocus",
+    },
+  },
+
+  // Leader + f + f: Alternative file finder binding
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "backspace f f": "file_finder::Toggle",
+    },
+  },
+
+  // Leader + f + g: Find in files (like Telescope live_grep)
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "backspace f g": "project_search::ToggleFocus",
+    },
+  },
+
+  // Leader + f + b: Open buffer/tab switcher
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "backspace f b": "tab_switcher::Toggle",
+    },
+  },
+
+  // Leader + e: Toggle project panel (alternative to -)
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "backspace e": "workspace::ToggleLeftDock",
+    },
+  },
+
+  // Leader + s + v: Split vertically
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "backspace s v": "pane::SplitRight",
+    },
+  },
+
+  // Leader + s + h: Split horizontally
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "backspace s h": "pane::SplitDown",
+    },
+  },
+
+  // Leader + w: Window/pane commands prefix
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "backspace w h": ["workspace::ActivatePaneInDirection", "Left"],
+      "backspace w j": ["workspace::ActivatePaneInDirection", "Down"],
+      "backspace w k": ["workspace::ActivatePaneInDirection", "Up"],
+      "backspace w l": ["workspace::ActivatePaneInDirection", "Right"],
+      "backspace w q": "pane::CloseActiveItem",
+    },
+  },
+
+  // Leader + b: Buffer commands
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "backspace b d": "pane::CloseActiveItem",
+      "backspace b n": "pane::ActivateNextItem",
+    },
+  },
+
+  // Leader + g: Git commands
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "backspace g s": "git_panel::ToggleFocus",
+    },
+  },
+
+  // Leader + t: Terminal
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "backspace t": "terminal_panel::ToggleFocus",
+    },
+  },
+
+  // Leader + /: Comment toggle
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "backspace /": "editor::ToggleComments",
+    },
+  },
+
+  // Leader + h: Clear search highlights
+
+  // Leader + q: Quit/close pane
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "backspace q": "pane::CloseActiveItem",
+    },
+  },
+
+  // Fast navigation improvements (enhanced Vim motions)
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "g d": "editor::GoToDefinition",
+      "g r": "editor::FindAllReferences",
+      "g i": "editor::GoToImplementation",
+      "g t": "editor::GoToTypeDefinition",
+      "[ d": "editor::GoToDiagnostic",
+      "] d": "editor::GoToDiagnostic",
+      "K": "editor::Hover",
+    },
+  },
+
+  // Quick fix and code actions
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "backspace c a": "editor::ToggleCodeActions",
+      "backspace r n": "editor::Rename",
+    },
+  },
+
+  // Diagnostics and problems
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "backspace d": "diagnostics::Deploy",
+    },
+  },
+
+  // Jump to symbol in file
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "backspace o": "outline::Toggle",
+    },
+  },
+
+  // Command palette
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "backspace p": "command_palette::Toggle",
+    },
+  },
+
+  // Zen mode
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "backspace z": "workspace::ToggleCenteredLayout",
+    },
+  },
+
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    },
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-/": ["workspace::ActivatePane", 0],
+    },
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "alt-]": "terminal_panel::Toggle",
+    },
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-.": ["workspace::ActivatePane", 0],
+    },
+  },
+]
