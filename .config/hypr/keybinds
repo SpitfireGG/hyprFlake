@@ -1,15 +1,11 @@
-
 $mainMod = SUPER
-
-
-bind = $mainMod, Q, killactive # kill the window on focus
-bind = $mainMod, delete,exec,  hyprlock # kill hyperland session
-bind = $mainMod, W, togglefloating # toggle the window on focus to float
-bind = ALT, return, fullscreen # toggle the window on focus to fullscreen
+bind = $mainMod, Q, killactive 
+bind = $mainMod, delete,exec,  hyprlock 
+bind = $mainMod, W, togglefloating 
+bind = ALT, return, fullscreen 
 bindl = Alt, P,exec,   pavucontrol
 bindl = ALT,S, exec, shutdown
-bind = $mainMod, K, togglesplit
-bind = $mainMod, A, exec, alacritty
+bind = $mainMod, A, exec, ghostty
 bind = $mainMod, G, exec, altus
 
 bind = $mainMod, E, exec, thunar
@@ -22,17 +18,13 @@ bind = ControlShift, U, exec, alacritty -e  btop
 
 $scratchpadsize = size 70% 70%
 $scratchpad = class:^(scratchpad)$
-windowrulev2 = float,$scratchpad
-windowrulev2 = $scratchpadsize,$scratchpad
-windowrulev2 = workspace special silent, $scratchpad
-windowrulev2 = center , $scratchpad
 
 bindl = Alt, delete, exec, shutdown --halt +1
 bindl = ALT,R, exec, reboot
 
 
-bind = $mainMod, backspace, exec, /home/archbishop/.config/rofi/powermenu/type-2/powermenu.sh     # launch desktop applications
-bind = $mainMod, tab, exec, pkill rofi || ~/.config/hypr/scripts/rofilaunch.sh  # switch between desktop applications
+bind = $mainMod, backspace, exec, /home/archbishop/.config/rofi/powermenu/type-2/powermenu.sh     
+bind = $mainMod, tab, exec, pkill rofi || ~/.config/hypr/scripts/rofilaunch.sh  
 
 
 bind = ,XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -54,13 +46,13 @@ bind = SuperShift, N, exec, playerctl next || playerctl position `bc <<< "100 * 
 bind = SuperShift, B, exec, playerctl previous
 bind = SuperShift, P, exec, playerctl play-pausekeybind
 
-## dmenu
-#bind = $mainMod, backspace, exec, wlogout --protocol layer-shell # logout menu
-bind = $mainMod, P, exec, grim -g "$(slurp)" - | swappy -f - # screenshot snip
+
+#bind = $mainMod, backspace, exec, wlogout --protocol layer-shell 
+bind = $mainMod, P, exec, grim -g "$(slurp)" - | swappy -f - 
 bind = $mainMod, J, exec, notify-send "Hyprland version: $(hyprctl version | head -2 | tail -1 | cut -f2 -d ' ')" "" -a 'Hyprland keybind'
 bind = $mainMod, Y, exec, notify-send "Millis since epoch" "$(date +%s%N | cut -b1-13)" -a 'Hyprland keybind'
 bind = SuperAlt, Equal, exec, notify-send "Hyprland test" "oh yeah this fucking works well" -u critical -a 'Hyprland keybind'
-
+bind = , F9, exec, grim -g "$(slurp)" - | swappy -f - 
 
 bind = SUPER, SPACE, exec,  noctalia-shell ipc call launcher toggle
 bind = SUPER, I, exec,  noctalia-shell ipc call sidePanel toggle
@@ -73,4 +65,8 @@ bind = SUPER, B, exec,  noctalia-shell ipc call brightness increase
 bind = SUPER, H, exec,  noctalia-shell ipc call launcher clipboard
 bind = SUPER, C, exec,  noctalia-shell ipc call launcher calculator
 bind = SUPER, L, exec,  noctalia-shell ipc call lockScreen  lock
-bind = SUPER, R, exec,  noctalia-shell ipc call wallpaper random
+bind = SUPER, R, exec,  noctalia-shell ipc call plugin:assistant-panel toggle
+bind  = SUPER , K , exec , noctalia-shell ipc call plugin:assistant-panel setModel "gpt-4o-mini"
+bind  = SUPER , G , exec , noctalia-shell ipc call plugin:assistant-panel setModel "gemini-2.5-flash"
+  
+

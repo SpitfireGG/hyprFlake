@@ -1,38 +1,15 @@
-exec-once = dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XCURSOR_THEME XCURSOR_SIZE GTK_THEME
 
-exec-once  = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP 
-
-exec-once  = exec-once=dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY
-
-exec-once = dbus-update-activation-environment --all
-
-exec-once  = dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP 
-
-exec-once = hypridle
-
-exec-once  = ~/.config/hypr/scripts/resetxdgportal.sh  
-
+exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP DISPLAY
+exec-once = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP DISPLAY
+exec-once = ~/.config/hypr/scripts/resetxdgportal.sh
 exec-once = swww-daemon --format xrgb
-
+exec-once = wireplumber
+exec-once = hypridle
+exec-once = noctalia-shell
+exec-once = nm-applet --indicator
+exec-once = blueman-applet
 exec-once = lxqt-policykit-agent
-
-exec-once  = noctalia-shell 
-
-exec-once = hyprlock
-
-
-exec-once  = nm-applet 
-
-exec-once  = blueman-applet
-
-exec-once = pkill dunst 
-
-exec-once = hyprctl setcursor Phinger-Cursors 18
-
-
-# Start the gnome-keyring-daemon
 exec-once = gnome-keyring-daemon --start --components=secrets
-
-
-
-
+exec-once = hyprctl setcursor NightDiamond-Blue 14
+exec-once = gsettings set org.gnome.desktop.interface cursor-theme 'NightDiamond-Blue'
+exec-once = gsettings set org.gnome.desktop.interface cursor-size 14
