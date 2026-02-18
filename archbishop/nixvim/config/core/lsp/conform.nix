@@ -4,7 +4,7 @@
   ...
 }: {
   plugins.conform-nvim = {
-    enable = true;
+    enable = false;
     settings = {
       notify_on_error = true;
       notify_no_formatters = true;

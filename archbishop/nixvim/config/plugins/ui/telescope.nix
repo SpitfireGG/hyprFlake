@@ -1,6 +1,5 @@
-{ pkgs, ... }:
-{
-  extraPlugins = with pkgs.vimPlugins; [ telescope-live-grep-args-nvim ];
+{pkgs, ...}: {
+  extraPlugins = with pkgs.vimPlugins; [telescope-live-grep-args-nvim];
   plugins.telescope = {
     enable = true;
     extensions = {
@@ -10,7 +9,16 @@
       fzf-native = {
         enable = true;
       };
-      live-grep-args.enable = true;
+      undo = {
+        enable = true;
+      };
+
+      live-grep-args = {
+        enable = true;
+      };
+      project = {
+        enable = true;
+      };
       advanced-git-search.enable = true;
       advanced-git-search.settings = {
         diff_plugin = "diffview";

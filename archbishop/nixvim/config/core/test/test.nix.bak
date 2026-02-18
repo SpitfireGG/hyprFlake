@@ -1,0 +1,22 @@
+{
+  config,
+  pkgs,
+  ...
+}: {
+  test = {
+    name = "nixvim tester";
+    buildNixvim = true;
+    extraInputs = [
+      (pkgs.runCommand "foo" {} ''
+        touch $out
+      '')
+      (pkgs.testers.testEqualContents {
+        assertion = "extraConfigLua has expected content";
+        actual = pkgs.writeText "actual.lua" config.extraConfigLua;
+        expected = pkgs.writeText "expected.lua" ''
+          -- Hello, world!
+        '';
+      })
+    ];
+  };
+}

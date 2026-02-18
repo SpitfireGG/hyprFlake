@@ -8,7 +8,7 @@ in {
   config = {
     highlight = {
       TablineFill = {
-        bg = "none";
+        bg = colors.base0E;
       };
       TabLine = {
         bg = "none";
@@ -123,6 +123,10 @@ in {
       DiagnosticFloatingHint = {
         fg = colors.base0D;
         bg = "none";
+      };
+
+      GitSignsAdd = {
+        fg = colors.base0B;
       };
 
       LspInfoBorder = {

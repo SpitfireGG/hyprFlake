@@ -1,0 +1,59 @@
+{pkgs, ...}: {
+  plugins.java = {
+    enable = true;
+    settings.root_markers = [
+      "settings.gradle"
+      "settings.gradle.kts"
+      "pom.xml"
+      "build.gradle"
+      "mvnw"
+      "gradlew"
+      "build.gradle"
+      "build.gradle.kts"
+      ".git"
+    ];
+  };
+  plugins.jdtls = {
+    enable = true;
+    jdtLanguageServerPackage = "${pkgs.jdt-language-server}";
+    cmd = [
+      "${pkgs.jdt-language-server}/bin/jdlts"
+      "-data"
+      "/home/archbishop/.cache/jdtls/workspace"
+      "configuration"
+      "/home/archbishop/.cache/jdtls/config"
+      "--jvm-arg=-Xmx1G"
+    ];
+    java = {
+      signatureHelp.enabled = true;
+      contentProvider.preferred = "fernflower"; # For better decompilation
+      completion = {
+        favoriteStaticMembers = [
+          "org.junit.jupiter.api.Assertions.*"
+          "org.mockito.Mockito.*"
+        ];
+        importOrder = [
+          "java"
+          "javax"
+          "com"
+          "org"
+        ];
+      };
+      sources = {
+        organizeImports = {
+          starThreshold = 9999;
+          staticStarThreshold = 9999;
+        };
+      };
+      codeGeneration = {
+        toString = {
+          template = "\${object.className} [\${member.name()}=\${member.value}, \${otherMembers}]";
+        };
+        hashCodeEquals = {
+          useJava7Objects = true;
+        };
+        useBlocks = true;
+      };
+    };
+  };
+}

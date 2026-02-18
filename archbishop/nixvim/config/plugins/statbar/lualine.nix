@@ -8,29 +8,85 @@ in {
       options = {
         icons_enabled = true;
         component_separators = {
-          left = "";
-          right = "";
+          left = "";
+          right = "";
         };
         section_separators = {
-          left = "";
-          right = "";
+          left = "";
+          right = "";
         };
         theme = {
-          bg = {
-            normal = {
-              a = {
-                fg = colors.base00;
-                bg = colors.base08;
-                gui = "bold";
-              };
-              b = {
-                fg = colors.base05;
-                bg = colors.base01;
-              };
-              c = {
-                fg = colors.base05;
-                bg = colors.base00;
-              };
+          normal = {
+            a = {
+              bg = "${colors.base0D}";
+              fg = "${colors.base00}";
+              gui = "bold";
+            };
+            b = {
+              bg = "${colors.base01}";
+              fg = "${colors.base0D}";
+            };
+            c = {
+              bg = "${colors.base00}";
+              fg = "${colors.base05}";
+            };
+          };
+          insert = {
+            a = {
+              bg = "${colors.base0B}";
+              fg = "${colors.base00}";
+              gui = "bold";
+            };
+            b = {
+              bg = "${colors.base01}";
+              fg = "${colors.base0B}";
+            };
+          };
+          visual = {
+            a = {
+              bg = "${colors.base0E}";
+              fg = "${colors.base00}";
+              gui = "bold";
+            };
+            b = {
+              bg = "${colors.base01}";
+              fg = "${colors.base0E}";
+            };
+          };
+          replace = {
+            a = {
+              bg = "${colors.base08}";
+              fg = "${colors.base00}";
+              gui = "bold";
+            };
+            b = {
+              bg = "${colors.base01}";
+              fg = "${colors.base08}";
+            };
+          };
+          command = {
+            a = {
+              bg = "${colors.base0A}";
+              fg = "${colors.base00}";
+              gui = "bold";
+            };
+            b = {
+              bg = "${colors.base01}";
+              fg = "${colors.base0A}";
+            };
+          };
+          inactive = {
+            a = {
+              bg = "${colors.base01}";
+              fg = "${colors.base03}";
+            };
+            b = {
+              bg = "${colors.base00}";
+              fg = "${colors.base03}";
+            };
+            c = {
+              bg = "${colors.base00}";
+              fg = "${colors.base03}";
             };
           };
         };
@@ -64,7 +120,7 @@ in {
         lualine_b = [
           {
             __unkeyed = "branch";
-            icon = "";
+            icon = "";
             padding = {
               left = 1;
               right = 1;
@@ -76,6 +132,17 @@ in {
               added = "♯ ";
               modified = "◆ ";
               removed = "◈ ";
+            };
+            diff_color = {
+              added = {
+                fg = "${colors.base0B}";
+              };
+              modified = {
+                fg = "${colors.base0A}";
+              };
+              removed = {
+                fg = "${colors.base08}";
+              };
             };
             padding = {
               left = 1;
@@ -105,6 +172,20 @@ in {
               warn = "◆";
               info = "◈";
               hint = "◇";
+            };
+            diagnostics_color = {
+              error = {
+                fg = "${colors.base08}";
+              };
+              warn = {
+                fg = "${colors.base0A}";
+              };
+              info = {
+                fg = "${colors.base0D}";
+              };
+              hint = {
+                fg = "${colors.base0C}";
+              };
             };
             colored = true;
           }

@@ -2,8 +2,8 @@
   plugins.none-ls = {
     enable = true;
     enableLspFormat = true;
-    settings.update_in_insert = true;
-    settings.debug = true;
+    settings.update_in_insert = false;
+    settings.debug = false;
     sources = {
       code_actions = {
         gitsigns.enable = false;
@@ -19,6 +19,7 @@
         qmlformat = {
           enable = true;
         };
+        google_java_format.enable = true;
 
         nixfmt = {
           enable = true;

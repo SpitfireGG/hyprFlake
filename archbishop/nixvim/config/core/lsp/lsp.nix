@@ -1,10 +1,10 @@
 {
   lib,
-  pkgs,
+  system,
+  pkgs ? import <nixpkgs> {},
   ...
 }: {
   plugins = {
-    # Completion engine - crucial for LSP functionality
     cmp = {
       enable = false;
       settings = {
@@ -66,6 +66,7 @@
             border = "rounded";
           };
         };
+
         mapping = {
           "<C-b>" = "cmp.mapping.scroll_docs(-4)";
           "<C-f>" = "cmp.mapping.scroll_docs(4)";
@@ -85,7 +86,6 @@
       };
     };
 
-    # Snippet engine
     luasnip.enable = true;
 
     lsp-format = {
@@ -95,6 +95,33 @@
     lsp = {
       enable = true;
       servers = {
+        jdtls = {
+          enable = true;
+          cmd = [
+            "${pkgs.jdt-language-server}/bin/jdtls"
+            "-data"
+            ".cache/jdtls/workspace"
+            "configuration"
+            "/home/archbishop/.cache/jdtls/config"
+          ];
+          autostart = false;
+          rootMarkers = [
+            ".git" # Git repository
+            "pom.xml" # Maven
+            "build.gradle" # Gradle
+            "build.gradle.kts" # Gradle Kotlin DSL
+            "settings.gradle" # Gradle multi-project
+            "gradlew" # Gradle wrapper
+            "mvnw" # Maven wrapper
+            ".project" # Eclipse project
+            ".classpath" # Eclipse classpath
+            "build.xml" # Ant
+            ".idea" # IntelliJ IDEA
+            "project.clj" # Leiningen (Clojure)
+          ];
+        };
+        # java_language_server.enable = true;
+
         eslint.enable = false;
         qmlls = {
           enable = false;
@@ -121,6 +148,8 @@
           ];
         };
         lua_ls.enable = false;
+
+        pyright.enable = true;
         gopls.enable = true;
         ts_ls = {
           enable = true;
@@ -131,7 +160,19 @@
             "tsx"
           ];
         };
-        tailwindcss.enable = true;
+        tailwindcss = {
+          enable = true;
+
+          autostart = false;
+          filetypes = [
+            "jsx"
+            "tsx"
+          ];
+          rootMarkers = [
+            "package.json"
+            "package.lock"
+          ];
+        };
         html.enable = true;
         clangd = {
           enable = true;
@@ -139,11 +180,23 @@
             "compile_commands.json"
             ".clangd"
             ".clang-format"
+            ".clang-tidy"
+            "compile_flags.txt"
+            "configure.ac"
+            ".git"
           ];
-          cmd = ["clangd --background-index --clang-tidy --log=verbose"];
+          cmd = [
+            "${pkgs.llvmPackages_20.clang-tools}/bin/clangd"
+            "--background-index"
+            "--header-insertion-decorators"
+            "--experimental-modules-support"
+            "--all-scopes-completion"
+            "--clang-tidy"
+            "--log=error"
+            "--query-driver=/**/*"
+          ];
         };
 
-        # Optimized OmniSharp configuration
         omnisharp = {
           enable = false;
           settings = {
@@ -188,16 +241,15 @@
 
         yamlls.enable = false;
 
-        # Choose ONE Nix LSP - nixd is more modern
         nixd = {
           enable = true;
           settings = {
+            options.nixvim.expr = "self.packages.${pkgs.system}.default.options";
             formatting = {
               command = ["${lib.getExe pkgs.alejandra}"];
             };
             evaluation = {
-              enable = true;
-              followImports = true;
+              enable = false;
             };
             completion = {
               enable = true;
@@ -228,7 +280,6 @@
           };
         };
 
-        # Disable nil_ls to avoid conflicts
         nil_ls.enable = false;
       };
 
@@ -295,13 +346,13 @@
     local _border = "rounded"
 
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-      vim.lsp.handlers.hover, {
+      vim.lsp.handlers["textDocument/hover"], {
         border = _border
       }
     )
 
     vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-      vim.lsp.handlers.signature_help, {
+      vim.lsp.handlers["textDocument/signatureHelp"], {
         border = _border
       }
     )
@@ -310,30 +361,22 @@
       float={border=_border}
     };
 
-    require('lspconfig.ui.windows').default_options = {
-      border = _border
-    }
+    -- require('lspconfig.ui.windows').default_options = {
+    --   border = _border
+    -- }
 
-    local signs = { Error = " ", Warn = " ", Hint = "󰏫 ", Info = " " }
+    local signs = { Error = "✘", Warn = "▲", Hint = "⚑", Info = "»" }
+    for type, icon in pairs(signs) do
+      local hl = "DiagnosticSign" .. type
+      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+    end
 
     vim.diagnostic.config({
-      signs = {
-        text = {
-          [vim.diagnostic.severity.ERROR] = signs.Error,
-          [vim.diagnostic.severity.WARN] = signs.Warn,
-          [vim.diagnostic.severity.INFO] = signs.Info,
-          [vim.diagnostic.severity.HINT] = signs.Hint,
-        },
-        numhl = {
-          [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
-          [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
-          [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
-          [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
-        },
-      },
+      virtual_text = false,
+      signs = true,
+      underline = true,
+      update_in_insert = false,
+      severity_sort = true,
     })
-
-
-
   '';
 }

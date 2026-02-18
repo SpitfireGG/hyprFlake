@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   filetype.extension.liq = "liquidsoap";
 
   plugins.treesitter = {
@@ -22,7 +21,7 @@
   };
 
   extraConfigLua = ''
-    local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+    local parser_config = require("nvim-treesitter").get_available()
 
     parser_config.liquidsoap = {
       filetype = "liquidsoap",

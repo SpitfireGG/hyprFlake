@@ -156,7 +156,7 @@ in {
         };
 
         fuzzy = {
-          use_frecency = true;
+          frecency.enabled = true;
           use_proximity = true;
         };
 
