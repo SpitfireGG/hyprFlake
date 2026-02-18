@@ -1,19 +1,19 @@
 {pkgs, ...}: {
   nix = {
-    settings.substituters = ["https://aseipp-nix-cache.global.ssl.fastly.net"];
-    binaryCaches = ["https://cache.nixos.org"];
-    binaryCachePublicKeys = ["cache.nixos.org-1:6aveZ/3/TfB+C6fL6vXpM9xIu+T8n1d+v3uL7vW/Wz0="];
-    package = pkgs.nixVersions.latest;
-    buildMachines = [
-      {
-        hostName = "archbishop";
-        system = "x86_64-linux"; # Or your system
-        maxJobs = 8;
-      }
-    ];
     settings = {
-      max-jobs = 8;
-      cores = 4;
+      substituters = [
+        "https://cache.nixos.org"
+        "https://nix-community.cachix.org"
+        "https://hyprland.cachix.org"
+        "https://aseipp-nix-cache.global.ssl.fastly.net"
+      ];
+      trusted-public-keys = [
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCUSeBs="
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      ];
+      max-jobs = "auto";
+      cores = 0; # Use all available cores per build
       auto-optimise-store = true;
       experimental-features = [
         "nix-command"
@@ -21,13 +21,19 @@
       ];
       keep-outputs = true;
       keep-derivations = true;
-      warn-dirty = true;
+      warn-dirty = false;
     };
+
+    package = pkgs.nixVersions.latest;
 
     gc = {
       automatic = true;
-      options = "--delete-older-than 4d";
+      dates = "weekly";
+      options = "--delete-older-than 7d";
     };
-    optimise.automatic = true;
+    optimise = {
+      automatic = true;
+      dates = ["weekly"];
+    };
   };
 }

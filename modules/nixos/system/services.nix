@@ -1,9 +1,19 @@
 {pkgs, ...}: {
+  services.displayManager.sddm.enable = false;
   services = {
+    greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --asterisks --remember --user-menu --greeting 'Welcome back' --cmd start-hyprland";
+          user = "archbishop";
+        };
+      };
+    };
     upower.enable = true;
     power-profiles-daemon.enable = true;
     xserver = {
-      enable = true;
+      enable = false;
       xkb.layout = "us";
     };
     tor = {
@@ -21,11 +31,6 @@
         BandWidthRate = "1 MBytes";
       };
     };
-    displayManager = {
-      ly = {
-        enable = true;
-      };
-    };
     postgresql = {
       enable = true;
       ensureDatabases = ["archdb"];
@@ -37,9 +42,9 @@
       '';
       initialScript = pkgs.writeText "backend-initScript" ''
         CREATE ROLE archbishop WITH LOGIN PASSWORD 'GG' CREATEDB;
-        GRANT ALL PRIVILIGES ON DATABASE archdb TO archbishop;
-        GRANT ALL PRIVILIGES ON DATABASE postgres TO archbishop;
-        \ connect archdb
+        GRANT ALL PRIVILEGES ON DATABASE archdb TO archbishop;
+        GRANT ALL PRIVILEGES ON DATABASE postgres TO archbishop;
+        \connect archdb
         GRANT ALL ON SCHEMA public TO archbishop;
       '';
       settings = {
@@ -74,20 +79,15 @@
       alsa.support32Bit = true;
       pulse.enable = true;
       jack.enable = true;
+      # Low-latency audio config
+      extraConfig.pipewire."92-low-latency" = {
+        context.properties = {
+          default.clock.rate = 48000;
+          default.clock.quantum = 512;
+          default.clock.min-quantum = 32;
+          default.clock.max-quantum = 8192;
+        };
+      };
     };
   };
-
-  /*
-  environment.systemPackages = [
-    (import ../../../archbishop/conf/ui/sddm.nix {inherit pkgs;})
-  ];
-
-  environment.etc."sddm.conf.d/astronaut-theme.conf".text = ''
-    [Theme]
-    Current=sddm-astronaut-theme
-    ThemeDir=/run/current-system/sw/share/sddm/themes/sddm-astronaut-theme/
-    ConfigFile=/run/current-system/sw/share/sddm/themes/sddm-astronaut-theme/Themes/japanese_aesthetic.conf
-      ConfigFile=/run/current-system/sw/share/sddm/themes/sddm-astronaut-theme/Themes/japanese_aesthetic.conf
-  '';
-  */
 }

@@ -37,8 +37,8 @@
     };
 
     cursor = {
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Ice";
+      package = pkgs.comixcursors.LH_Opaque_Slim_Black;
+      name = "comixcursors";
       size = 24;
     };
   };

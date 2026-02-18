@@ -10,6 +10,13 @@
   };
 
   security.rtkit.enable = true;
+  security.wrappers.gsr-kms-server = {
+    owner = "archbishop";
+    group = "archbishop";
+
+    source = "${pkgs.gpu-screen-recorder}/bin/gsr-kms-server";
+    capabilities = "cap_sys_admin+ep";
+  };
   security.pam.services.login.enableGnomeKeyring = true;
   security.wrappers.dumpcap = {
     source = "${pkgs.wireshark}/bin/dumpcap";

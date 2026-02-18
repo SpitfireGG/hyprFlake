@@ -175,7 +175,7 @@
         criticalUrgencyDuration = 15;
       };
       osd = {
-        enabled = false;
+        enabled = true;
         location = "top_right";
         monitors = [];
         autoHideMs = 2000;

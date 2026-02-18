@@ -2,7 +2,9 @@
   environment = {
     systemPackages = with pkgs; [
       hyprlock
+      jetbrains.idea
       hyprland
+      antigravity
       xdg-desktop-portal
       xdg-desktop-portal-hyprland
       wayland
@@ -115,9 +117,10 @@
       ctags
       stylua
 
-      # C++ Programming & Build Tools
-      llvmPackages_20.clang-tools
-      lldb_21
+      llvmPackages_latest.lldb
+      llvmPackages_latest.libllvm
+      llvmPackages_latest.libcxx
+      llvmPackages_latest.clang
       gcc
       gnumake
       cmakeCurses

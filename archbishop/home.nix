@@ -8,7 +8,6 @@
 in {
   imports = [
     inputs.noctalia.homeModules.default
-    #inputs.caelestia-shell.homeManagerModules.default
     ./shell/noctalia/default.nix
   ];
 
@@ -17,13 +16,13 @@ in {
     packages = with pkgs; [
       inputs.noctalia.packages.${system}.default
       reversal-icon-theme
+      zed-editor
     ];
     pointerCursor = {
       gtk.enable = true;
-
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Classic";
-      size = 14;
+      package = pkgs.nightdiamond-cursors;
+      name = "NightDiamond-Blue";
+      size = 16;
     };
     stateVersion = "24.05";
   };

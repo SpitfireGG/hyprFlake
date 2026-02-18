@@ -36,21 +36,21 @@
   ];
   services.xserver.videoDrivers = ["nvidia"];
   hardware.opengl.enable = true;
-  gaming.enable = true;
+  gaming.enable = false;
 
   virtualisation.virtualbox.host.enable = false;
   virtualisation.libvirtd.enable = false;
   virtualisation.spiceUSBRedirection.enable = false;
   virtualisation = {
     docker = {
-      enable = true;
+      enable = false;
       daemon.settings = {
         log-driver = "journald";
         registry-mirrors = ["https://mirror.gcr.io"];
         storage-driver = "overlay2";
       };
       rootless = {
-        enable = true;
+        enable = false;
         setSocketVariable = true;
       };
     };
