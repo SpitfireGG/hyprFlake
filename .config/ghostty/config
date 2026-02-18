@@ -1,0 +1,31 @@
+window-vsync = true
+font-family = "Maple Mono"
+font-family-italic = "Maple Mono"
+font-family-bold = "Maple Mono"
+
+cursor-color = #e9ecef
+
+font-feature = -calt, -liga, -dlig
+font-size = 12
+font-thicken = true
+font-thicken-strength=1
+adjust-cell-height=1
+freetype-load-flags = force-autohint
+
+app-notifications = no-clipboard-copy
+mouse-scroll-multiplier = 2.0
+
+background-opacity = 0.95
+background-blur=0
+
+window-padding-x = 8
+window-padding-y = 0
+window-decoration = false
+confirm-close-surface = false
+
+cursor-style = block
+shell-integration-features = no-cursor
+cursor-click-to-move = true
+shell-integration = fish
+
+theme = Ayu
