@@ -5,6 +5,7 @@
     nixvim.url = "github:nix-community/nixvim";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
   outputs = {

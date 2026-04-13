@@ -106,21 +106,20 @@
           ];
           autostart = false;
           rootMarkers = [
-            ".git" # Git repository
-            "pom.xml" # Maven
-            "build.gradle" # Gradle
-            "build.gradle.kts" # Gradle Kotlin DSL
-            "settings.gradle" # Gradle multi-project
-            "gradlew" # Gradle wrapper
-            "mvnw" # Maven wrapper
-            ".project" # Eclipse project
-            ".classpath" # Eclipse classpath
-            "build.xml" # Ant
-            ".idea" # IntelliJ IDEA
-            "project.clj" # Leiningen (Clojure)
+            ".git"
+            "pom.xml"
+            "build.gradle"
+            "build.gradle.kts"
+            "settings.gradle"
+            "gradlew"
+            "mvnw"
+            ".project"
+            ".classpath"
+            "build.xml"
+            ".idea"
+            "project.clj"
           ];
         };
-        # java_language_server.enable = true;
 
         eslint.enable = false;
         qmlls = {

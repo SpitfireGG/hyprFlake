@@ -12,6 +12,10 @@ in {
       colorscheme = "gruvbox-dark-hard";
     };
 
+    vague = {
+      enable = false;
+    };
+
     gruvbox-material-nvim = {
       enable = true;
       settings = {

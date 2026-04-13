@@ -1,7 +1,7 @@
 {
   plugins = {
     sg = {
-      enable = true;
+      enable = false;
       settings = {
         accept_tos = true;
         enable_cody = true;

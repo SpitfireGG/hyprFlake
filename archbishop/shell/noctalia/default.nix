@@ -9,7 +9,7 @@
       settingsVersion = 16;
       bar = {
         position = "top";
-        backgroundOpacity = 0.85;
+        backgroundOpacity = 1;
         monitors = [];
         density = "mini";
         showCapsule = false;

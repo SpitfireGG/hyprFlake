@@ -15,8 +15,12 @@ in {
     inherit username homeDirectory;
     packages = with pkgs; [
       inputs.noctalia.packages.${system}.default
+      inputs.zen-browser.packages.${system}.default
       reversal-icon-theme
       zed-editor
+      kdePackages.kdenlive
+      antigravity
+      jetbrains.goland
     ];
     pointerCursor = {
       gtk.enable = true;

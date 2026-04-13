@@ -1,5 +1,10 @@
+{
+  plugins.nvim-surround = {
+    enable = true;
+  };
+}
+/*
 {pkgs, ...}: {
-  # Don't use plugins.nvim-surround at all
   extraPlugins = with pkgs.vimPlugins; [
     nvim-surround
   ];
@@ -20,3 +25,5 @@
     })
   '';
 }
+*/
+
