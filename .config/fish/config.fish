@@ -7,6 +7,22 @@ export PATH="$HOME/.nix-profile/bin/ghc:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
+# Source - https://stackoverflow.com/a/55493626
+# Posted by arcseldon
+# Retrieved 2026-02-26, License - CC BY-SA 4.0
+
+export EDITOR='nvim'
+export VISUAL='nvim'
+
+export BASE="localhost:8081"
+export PLATFORM_API_KEY="PLATFORM-API-KEY"
+export X_API_KEY="API-KEY"
+export TENANT_API_KEY="API-KEY"
+export TOKEN_LIMIT=900000
+
+
+
+
 
 
 export http_proxy=
@@ -14,12 +30,27 @@ export https_proxy=
 export all_proxy=
 
 
+set -gx  NODE_PATH $PATH /home/archbishop/.npm-global/lib/node_modules/
+set -gx PATH $PATH /home/archbishop/.npm-global/bin
 set -x GOPATH $HOME/go
 set -x PATH $PATH /usr/bin/cargo
 
 #-----------aliases----------------
 #Syntax highlighting for manpage - better understanding :)
 # can also be achieved by using Pager 
+
+
+# kill alias
+
+function killer 
+
+if  sudo netstat -tlnp | grep -q $argv[1];
+    echo -e  "process found\nkilling the process\n";set PROCESS_INFO (sudo netstat -tlnp | grep $argv[1] | awk -F "/" '{print $1}' | awk '{print $7}'); 
+        kill $PROCESS_INFO;
+    else
+        echo -e  "could not find process\n";
+    end
+end
 
 
 # ( gcc compilation)
@@ -91,13 +122,13 @@ alias db 'dotnet build'
 alias dw 'dotnet watch run'
 
 
-alias nvim '/home/archbishop/hyprnix/nixos-config/archbishop/nixvim/result/bin/nvim'
+alias nvim '/home/archbishop/nixos-config/archbishop/nixvim/result/bin/nvim'
 alias nixy '/home/archbishop/.config/nixvim/result/bin/nvim'
 alias zz ranger
 alias rmi 'rm -i'
 alias fs 'source ~/.config/fish/config.fish'
 alias bb 'cd ../../'
-alias og 'nvim $(fzf --preview="bat {}")'
+alias og='nvim $(find . -type f -printf "%T@ %p\0" | sort -rz -n | cut -zd" " -f2- | fzf --read0 --preview="bat {}")'
 
 alias nb 'nix build'
 alias sysb 'sudo nixos-rebuild --switch --flake .#archbishop --show-trace'
@@ -122,6 +153,7 @@ alias gst 'git status .'
 alias cbr 'git branch --sort=-committerdate | fzf --header "Checkout Recent Branch" --preview "git diff --color=always {1}" --pointer=":)" | xargs git checkout'
 alias gp 'git push -u origin'
 alias gpm 'git push -u origin main'
+alias gpmv 'git push -u -v origin main'
 alias gll 'git log -1 HEAD --stat'
 alias gc 'git commit -m'
 alias grv 'git remote -v'
@@ -142,3 +174,7 @@ alias gchasm='git checkout x86_64_intel_guide'
 
 
 starship init fish | source
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
