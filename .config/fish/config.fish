@@ -7,22 +7,6 @@ export PATH="$HOME/.nix-profile/bin/ghc:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
-# Source - https://stackoverflow.com/a/55493626
-# Posted by arcseldon
-# Retrieved 2026-02-26, License - CC BY-SA 4.0
-
-export EDITOR='nvim'
-export VISUAL='nvim'
-
-export BASE="localhost:8081"
-export PLATFORM_API_KEY="PLATFORM-API-KEY"
-export X_API_KEY="API-KEY"
-export TENANT_API_KEY="API-KEY"
-export TOKEN_LIMIT=900000
-
-
-
-
 
 
 export http_proxy=
@@ -67,11 +51,11 @@ function comp
     
     if gcc $base_flags -o $output_name $source_files
         echo""
-        echo "✔️ Compilation successful"
+        echo "Compilation successful"
         ./$output_name
     else
         echo""
-        echo "⚠️ Compilation failed"
+        echo "Compilation failed"
         return 1
     end
 end
