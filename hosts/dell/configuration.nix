@@ -43,7 +43,7 @@
   virtualisation.spiceUSBRedirection.enable = false;
   virtualisation = {
     docker = {
-      enable = false;
+      enable = true;
       daemon.settings = {
         log-driver = "journald";
         registry-mirrors = ["https://mirror.gcr.io"];

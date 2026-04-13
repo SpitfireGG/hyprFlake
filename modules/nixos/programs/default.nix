@@ -3,22 +3,22 @@
     systemPackages = with pkgs; [
       hyprlock
       jetbrains.idea
+
+      wineWow64Packages.stable
+      wineWow64Packages.waylandFull
+      winetricks
+
       hyprland
-      antigravity
       xdg-desktop-portal
       xdg-desktop-portal-hyprland
       wayland
       wl-clipboard
       swww
-      wofi
       rofi
       cliphist
       libnotify
+      jetbrains.datagrip
       lxqt.lxqt-policykit
-
-      #sql
-      beekeeper-studio
-      dbeaver-bin
 
       firefox-devedition
       ghostty
@@ -33,7 +33,6 @@
       jq
       yq
       moreutils
-      psmisc
       procps
       inotify-tools
 
@@ -57,7 +56,6 @@
       atop
       pavucontrol
       brightnessctl
-      gnome-system-monitor
       gnome-extension-manager
       gnome-tweaks
       font-manager
@@ -78,7 +76,6 @@
       mpdris2
       playerctl
       cava
-      spotify
       gammastep
 
       # Networking

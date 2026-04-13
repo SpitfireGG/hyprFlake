@@ -4,17 +4,16 @@
       options snd-intel-dspcfg dsp_driver=1
     '';
     kernel.sysctl = {
-      # Network security
       "net.ipv4.tcp_syncookies" = true;
       "net.ipv4.tcp_rfc1337" = 1;
-      # Memory management — desktop-optimized
-      "vm.swappiness" = 10;         # Prefer RAM over swap on desktop
+
+      "vm.swappiness" = 10;
       "vm.dirty_ratio" = 15;
       "vm.dirty_background_ratio" = 5;
-      "vm.vfs_cache_pressure" = 50; # Keep dentries/inodes in cache longer
-      # Responsiveness
+      "vm.vfs_cache_pressure" = 50;
+
       "kernel.sched_autogroup_enabled" = 1;
-      "kernel.nmi_watchdog" = 0;    # Disable NMI watchdog (saves power)
+      "kernel.nmi_watchdog" = 0;
     };
     kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [
@@ -22,22 +21,23 @@
       "splash"
       "usbcore.autosuspend=-1"
       "nvidia-drm.modeset=1"
+      "nvidia.NVreg_PreserveVideoMemoryAllocations=0"
+      "nvidia.NVreg_TemporaryFilePath=/var/tmp"
       "ipv6.disable=1"
       "audit=0"
       "nvme_core.default_ps_max_latency_us=0"
-      "threadirqs"              # Better IRQ threading for audio/latency
+      "threadirqs"
     ];
     loader = {
       systemd-boot.enable = true;
-      systemd-boot.configurationLimit = 5; # Keep only last 5 generations
+      systemd-boot.configurationLimit = 5;
       efi.canTouchEfiVariables = false;
     };
-    # Use tmpfs for /tmp — faster, cleared on reboot
+
     tmp.useTmpfs = true;
     tmp.tmpfsSize = "4G";
   };
 
-  # zram swap — compressed RAM-based swap, much faster than disk swap
   zramSwap = {
     enable = true;
     algorithm = "zstd";
