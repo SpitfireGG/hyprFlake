@@ -1,3 +1,5 @@
+command = TERM=xterm-256color /run/current-system/sw/bin/fish
+
 window-vsync = true
 font-family = "Maple Mono"
 font-family-italic = "Maple Mono"
@@ -28,4 +30,4 @@ shell-integration-features = no-cursor
 cursor-click-to-move = true
 shell-integration = fish
 
-theme = Ayu
+theme = Belafonte Night
