@@ -13,10 +13,6 @@
 
 <br>
 
-> *Everything is Nix. The editor, the shell, the WM, the soul.*
-
-<br>
-
 <img src="assets/cava.png" width="100%" alt="Hyprland Desktop — Cava Audio Visualizer">
 
 </div>
@@ -29,13 +25,13 @@
 
 ### ✦ Nixvim
 
-*Declaratively configured via [Nixvim](https://github.com/nix-community/nixvim) — not Neovim, not VS Code. Pure Nix.*
+_Declaratively configured via [Nixvim](https://github.com/nix-community/nixvim) — not Neovim with lua. Nixvim with Pure Nix._
 
 <table>
 <tr>
 <td width="50%">
 <img src="assets/nixvim.png" alt="Nixvim — Go Development" width="100%">
-<p align="center"><sub>Go development · transparent background · anime aesthetic</sub></p>
+<p align="center"><sub>development environment · transparent background</sub></p>
 </td>
 <td width="50%">
 <img src="assets/nixvim2.png" alt="Nixvim — Split View with Outline" width="100%">
@@ -61,7 +57,7 @@
 </td>
 <td width="50%">
 <img src="assets/btop.png" alt="btop — System Monitor" width="100%">
-<p align="center"><sub>btop · system monitoring · catppuccin theme</sub></p>
+<p align="center"><sub>btop · system monitoring · Ayu theme</sub></p>
 </td>
 </tr>
 </table>
@@ -104,22 +100,22 @@
 
 <div align="center">
 
-| Component | Choice |
-|:---|:---|
-| **OS** | NixOS (unstable) |
-| **WM** | Hyprland |
-| **Shell** | Fish + Starship |
-| **Terminal** | Ghostty |
-| **Editor** | Nixvim (declarative Neovim) |
-| **Bar** | Waybar |
-| **Browser** | Zen Browser |
-| **Notifications** | SwayNC |
-| **Launcher** | Rofi |
-| **Wallpaper** | Waypaper / wpaperd |
-| **System Monitor** | btop |
-| **Audio Visualizer** | Cava |
-| **Multiplexer** | tmux |
-| **File Manager** | Ranger / Thunar |
+| Component            | Choice                      |
+| :------------------- | :-------------------------- |
+| **OS**               | NixOS (unstable)            |
+| **WM**               | Hyprland                    |
+| **Shell**            | Fish + Starship             |
+| **Terminal**         | Ghostty                     |
+| **Editor**           | Nixvim (declarative Neovim) |
+| **Bar**              | noctalia                    |
+| **Browser**          | Zen Browser                 |
+| **Notifications**    | noctalia-shell              |
+| **Launcher**         | Rofi                        |
+| **Wallpaper**        | noctalia                    |
+| **System Monitor**   | btop                        |
+| **Audio Visualizer** | Cava                        |
+| **Multiplexer**      | tmux                        |
+| **File Manager**     | Ranger / Thunar             |
 
 </div>
 
@@ -161,7 +157,7 @@
 └── assets/                # Screenshots for this README
 ```
 
-> **Note:** Hyprland, Waybar, and other tool configs live in `.config/` as traditional dotfiles — making them accessible to anyone, regardless of whether they use NixOS.
+> **Note:** Hyprland, and other tool configs live in `.config/` as traditional dotfiles — making them accessible to anyone, regardless of whether they use NixOS.
 
 <br>
 
@@ -205,7 +201,7 @@ Everything is declarative. Everything is reproducible. Rebuild the entire system
 
 ### ✦
 
-*Built on NixOS · Composed in Hyprland · Edited in Nixvim*
+_Built on NixOS · Composed in Hyprland · Edited in Nixvim_
 
 If this setup caught your eye, consider dropping a ⭐
 
