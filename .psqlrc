@@ -1,0 +1,24 @@
+\pset border 2
+\pset linestyle unicode
+\pset pager always
+\pset format wrapped
+\pset columns 0
+\pset tuples_only false
+\pset null '∅'
+
+\set PROMPT1 '%[%033[1;32m%]%n@%[%033[1;33m%]%/%R%[%033[0m%]%[%033[1;32m%]%#%[%033[0m%] '
+\set PROMPT2 '%[%033[1;32m%]%n@%[%033[1;33m%]%/%R%[%033[0m%] '
+
+\x auto
+
+\timing on
+
+\set HISTSIZE 10000
+\set HISTFILE ~/.psql_history
+
+\set dbs 'SELECT datname, pg_size_pretty(pg_database_size(datname)) as size, numbackends as connections FROM pg_database ORDER BY pg_database_size(datname) DESC;'
+\set top 'SELECT schemaname, tablename, pg_size_pretty(pg_total_relation_size(schemaname||\'.\'||tablename)) as total, pg_size_pretty(pg_relation_size(schemaname||\'.\'||tablename)) as table, pg_size_pretty(pg_total_relation_size(schemaname||\'.\'||tablename) - pg_relation_size(schemaname||\'.\'||tablename)) as index FROM pg_tables WHERE schemaname NOT IN (\'information_schema\',\'pg_catalog\') ORDER BY pg_total_relation_size(schemaname||\'.\'||tablename) DESC LIMIT 10;'
+\set active 'SELECT pid, usename, datname, state, query FROM pg_stat_activity WHERE state = \'active\' ORDER BY query_start DESC;'
+\set locks 'SELECT pid, locktype, relation::regclass, mode, granted FROM pg_locks WHERE NOT granted;'
+
+\set VERBOSITY default
