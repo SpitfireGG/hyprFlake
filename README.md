@@ -1,113 +1,212 @@
-<h1 align="center">✨ HyprNix Dotfiles ✨</h1>
-<p align="center">
-  <i>Aesthetic and Declarative Hyprland + Neovim Configuration for NixOS</i>
-</p>
-
 <div align="center">
 
-  <img src="https://img.shields.io/badge/Hyprland-✓-9cf?logo=linux&logoColor=white" alt="Hyprland Badge"/>
-  <img src="https://img.shields.io/badge/Neovim-0.10%2B-green?logo=neovim" alt="Neovim Badge"/>
-  <img src="https://img.shields.io/badge/NixOS-Declarative-5277C3?logo=nixos&logoColor=white" alt="NixOS Badge"/>
-  <img src="https://img.shields.io/badge/Theme-Catppuccin-FAB387?style=flat&logo=catppuccin&logoColor=000000" alt="Catppuccin Badge"/>
+# ✦ hyprFlake ✦
+
+**A declarative Hyprland + NixOS rice, managed entirely through Nix Flakes.**
+
+<br>
+
+[![NixOS](https://img.shields.io/badge/NixOS-unstable-5277C3?style=for-the-badge&logo=nixos&logoColor=white)](https://nixos.org)
+[![Hyprland](https://img.shields.io/badge/Hyprland-WM-00C4B3?style=for-the-badge&logo=linux&logoColor=white)](https://hyprland.org)
+[![Nixvim](https://img.shields.io/badge/Nixvim-Editor-88C0D0?style=for-the-badge&logo=neovim&logoColor=white)](https://github.com/nix-community/nixvim)
+[![Stars](https://img.shields.io/github/stars/SpitfireGG/hyprFlake?style=for-the-badge&color=FAB387&logo=starship&logoColor=white)](https://github.com/SpitfireGG/hyprFlake)
+
+<br>
+
+> *Everything is Nix. The editor, the shell, the WM, the soul.*
+
+<br>
+
+<img src="assets/cava.png" width="100%" alt="Hyprland Desktop — Cava Audio Visualizer">
 
 </div>
 
-<div align="center">
-  <img src="assets/combined0.png" width="100%" alt="Desktop Preview - Firefox Browsing">
-</div>
+<br>
 
----
-
-## ✨ Overview
-
-This repository contains my personal NixOS configuration, utilizing Nix flakes and Home Manager to create a reproducible and declarative desktop environment centered around the Hyprland Wayland compositor and Neovim. The goal is a clean, aesthetic, and highly functional setup managed entirely by Nix.
-
----
-
-## 📸 Showcase
-
-Visual examples of the configuration.
-
-### Hyprland Desktop
-
-| Home                                                                 | Terminal with tmux                                                         |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| <img src="assets/home.png" width="100%" alt="Hyprland with Spotify"> | <img src="assets/terminal.png" width="100%" alt="Hyprland with Terminals"> |
-
-### Neovim
-
-Configured declaratively using Nixvim, with advanced LSP support (including `nixd` for Nix files) and `nvim-cmp`.
+## 🖼️ Gallery
 
 <div align="center">
-  <img src="assets/nvim.png" width="100%" alt="Neovim LSP Hover">
-  <img src="assets/lsp.png" width="100%" alt="Neovim Completion Popup">
+
+### ✦ Nixvim
+
+*Declaratively configured via [Nixvim](https://github.com/nix-community/nixvim) — not Neovim, not VS Code. Pure Nix.*
+
+<table>
+<tr>
+<td width="50%">
+<img src="assets/nixvim.png" alt="Nixvim — Go Development" width="100%">
+<p align="center"><sub>Go development · transparent background · anime aesthetic</sub></p>
+</td>
+<td width="50%">
+<img src="assets/nixvim2.png" alt="Nixvim — Split View with Outline" width="100%">
+<p align="center"><sub>File explorer · outline panel · saga symbols</sub></p>
+</td>
+</tr>
+</table>
+
+<img src="assets/nixvim_toggleterminal.png" width="100%" alt="Nixvim — ToggleTerm Floating Terminal">
+<p align="center"><sub>Nixvim + ToggleTerm — floating terminal overlay with transparency</sub></p>
+
+<br>
+
+---
+
+### ✦ Terminal & Workflow
+
+<table>
+<tr>
+<td width="50%">
+<img src="assets/tmux.png" alt="tmux — Multi-pane Development Workflow" width="100%">
+<p align="center"><sub>tmux · split panes · nixvim + docker + spring boot</sub></p>
+</td>
+<td width="50%">
+<img src="assets/btop.png" alt="btop — System Monitor" width="100%">
+<p align="center"><sub>btop · system monitoring · catppuccin theme</sub></p>
+</td>
+</tr>
+</table>
+
+<br>
+
+---
+
+### ✦ PostgreSQL & Database
+
+<img src="assets/postgres.png" width="100%" alt="PostgreSQL — Terminal Query Results">
+<p align="center"><sub>PostgreSQL queries rendered directly in the terminal · ghostty</sub></p>
+
+<br>
+
+---
+
+### ✦ Desktop & Utilities
+
+<table>
+<tr>
+<td width="50%">
+<img src="assets/wallpaperSelector.png" alt="Waypaper — Wallpaper Selector" width="100%">
+<p align="center"><sub>Waypaper wallpaper selector · anime collection · Ayu theme</sub></p>
+</td>
+<td width="50%">
+<img src="assets/zen.png" alt="Zen Browser — GitHub" width="100%">
+<p align="center"><sub>Zen Browser · minimal chrome · GitHub integration</sub></p>
+</td>
+</tr>
+</table>
+
 </div>
 
----
-
-## 🛠 Installation & Usage
-
-This configuration is managed by Nix flakes. It's not a traditional dotfile setup.
-
-1.  **Clone:** Clone this repository to a location like `~/.config/nixos`.
-2.  **Configure Flake:** Edit `flake.nix` to include your machine's hostname under `nixosConfigurations` and your username under `homeConfigurations`, pointing to the correct files (likely under `hosts/` and `users/`).
-3.  **Prepare Host:** Copy one of the example host directories (e.g., `hosts/dell`) to `hosts/<your-hostname>`. Update `hardware-configuration.nix` and `configuration.nix` for your specific machine and desired users.
-4.  **Prepare User:** Copy one of the example user directories (e.g., `users/kenzo`) to `users/<your-username>`. Update `home.nix` for your specific user needs.
-5.  **Apply:** From the repository root, run `sudo nixos-rebuild switch --flake .#<your-hostname>`.
+<br>
 
 ---
 
-## 🧠 Configuration Structure
+## 🧬 Stack
 
-The configuration is organized to be modular and easy to navigate:
+<div align="center">
+
+| Component | Choice |
+|:---|:---|
+| **OS** | NixOS (unstable) |
+| **WM** | Hyprland |
+| **Shell** | Fish + Starship |
+| **Terminal** | Ghostty |
+| **Editor** | Nixvim (declarative Neovim) |
+| **Bar** | Waybar |
+| **Browser** | Zen Browser |
+| **Notifications** | SwayNC |
+| **Launcher** | Rofi |
+| **Wallpaper** | Waypaper / wpaperd |
+| **System Monitor** | btop |
+| **Audio Visualizer** | Cava |
+| **Multiplexer** | tmux |
+| **File Manager** | Ranger / Thunar |
+
+</div>
+
+<br>
+
+---
+
+## 📂 Structure
 
 ```
 .
-├── assets/               # Screenshots and media for the README
-├── flake.lock            # Locked dependencies
-├── flake.nix             # The main entry point: defines inputs, hosts, and users.
-├── hosts/                # Contains configuration files for each *machine*.
-│   └── <hostname>/       # e.g., dell/, exodus/
-│       ├── configuration.nix  # Imports common modules, sets machine-specific options, and links to user configs.
-│       └── hardware-configuration.nix # Describes the machine's hardware (usually generated).
-├── modules/              # Reusable configuration chunks (the core of the setup).
-│   ├── nixos/            # Modules for the NixOS system layer (services, boot, networking, desktop setup).
-│   │   └── system/, desktop/, programs/, misc/... # Organized by concern.
-│   └── home-manager/     # Modules for the Home Manager user layer (programs, dotfiles, themes).
-│       └── programs/, user/...       # Organized by concern (e.g., nvim, hyprland, themes, colors).
-├── users/                # Contains configuration files for each *user profile*.
-│   └── <username>/       # e.g., archbishop/
-│       └── home.nix           # Imports common Home Manager modules and sets user-specific overrides.
-├── pkgs/                 # Definitions for custom packages.
-│   └── default.nix
-├── overlays/             # Overlays to modify existing packages from Nixpkgs.
-│   └── default.nix
-├── files/                # (Recommended Addition) Directory for static configuration files (if any) that aren't fully Nixified but managed by Home Manager/NixOS. e.g., scripts, static dotfiles, config snippets.
-└── README.md             # This file!
+├── flake.nix              # Entry point — inputs, nixos & home-manager configs
+├── flake.lock             # Locked dependency graph
+│
+├── hosts/                 # Machine-specific configurations
+│   └── dell/              # Hardware config, boot, networking
+│
+├── archbishop/            # User-level config (home-manager)
+│   ├── home.nix           # Home-manager entry point
+│   └── nixvim/            # Full Nixvim editor configuration
+│
+├── modules/               # Reusable NixOS & home-manager modules
+│   ├── nixos/             # System-level (services, desktop, programs)
+│   └── home-manager/      # User-level (programs, theming, dotfiles)
+│
+├── .config/               # Traditional dotfiles (hyprland, waybar, etc.)
+│   ├── hypr/              # Hyprland config
+│   ├── waybar/            # Bar config
+│   ├── ghostty/           # Terminal config
+│   ├── rofi/              # Launcher config
+│   ├── cava/              # Audio visualizer config
+│   ├── dunst/             # Notification daemon config
+│   ├── fish/              # Shell config
+│   └── ...                # btop, kitty, swaync, ranger, etc.
+│
+├── walls/                 # Wallpaper collection (anime / aesthetic)
+├── pkgs/                  # Custom package definitions
+├── overlays/              # Nixpkgs overlays
+└── assets/                # Screenshots for this README
 ```
 
-**NOTE** : I haven't written hyprland and other utilities configuration through nix, not all the people use nixos as daily drivers, I have configured them inside the .config folder like any other distros, to make it accessible for all types of users to use the configuration.
+> **Note:** Hyprland, Waybar, and other tool configs live in `.config/` as traditional dotfiles — making them accessible to anyone, regardless of whether they use NixOS.
 
-**How it Works:**
-
-1.  **`flake.nix`** tells Nix where to find the configurations for your specific machines (`hosts/`) and users (`users/`).
-2.  A machine's **`hosts/<hostname>/configuration.nix`** pulls together:
-    - Its specific hardware configuration.
-    - Reusable **NixOS modules** from `modules/nixos/` (e.g., enabling systemd services, setting up networking, configuring the display manager).
-    - The Home Manager system module, which in turn activates the configuration for a specific user profile defined in **`users/<username>/home.nix`**.
-3.  A user's **`users/<username>/home.nix`** pulls together:
-    - Reusable **Home Manager modules** from `modules/home-manager/` (e.g., configuring specific programs like Neovim or Hyprland, managing dotfiles, applying themes).
-    - Any user-specific overrides or settings not handled by the common modules.
-4.  **`modules/`** contain the actual configurations for programs and system features. These modules are designed to be imported by any host or user configuration, promoting reusability.
-5.  **`files/`** (if added) is where static files referenced by your modules (like a custom `init.lua` for Neovim if not using Nixvim exclusively, or config files for programs not fully supported by Home Manager modules) would live. They are then linked or included by the relevant modules.
+<br>
 
 ---
 
-## ❤️ Credits & Inspiration
+## 🚀 Installation
 
-- Thanks to the NixOS, Home Manager, Hyprland, Neovim, and Nixvim communities.
-- Inspired by other dotfile configurations.
+```bash
+# Clone the repo
+git clone https://github.com/SpitfireGG/hyprFlake.git
+cd hyprFlake
+
+# Apply NixOS system configuration
+sudo nixos-rebuild switch --flake .#archbishop
+
+# Apply home-manager user configuration
+home-manager switch --flake .#archbishop
+```
+
+> You will need to adapt `hosts/dell/` and `archbishop/` to match your machine and user.
+
+<br>
 
 ---
 
-<div align="center"> <br> <i>If you like the config, consider starring the repo!</i> </div>
+## 🧠 How It Works
+
+1. **`flake.nix`** declares all inputs (nixpkgs, home-manager, nixvim, zen-browser, quickshell) and wires them together.
+2. **`hosts/dell/configuration.nix`** pulls in NixOS system modules — boot, networking, services, desktop environment.
+3. **`archbishop/home.nix`** configures the user layer through home-manager — programs, dotfiles, theming, **Nixvim**.
+4. **`modules/`** contain reusable configuration chunks that any host or user can import.
+5. **`.config/`** holds traditional dotfiles for tools that don't need (or benefit from) Nix-level management.
+
+Everything is declarative. Everything is reproducible. Rebuild the entire system from a single `flake.nix`.
+
+<br>
+
+---
+
+<div align="center">
+
+### ✦
+
+*Built on NixOS · Composed in Hyprland · Edited in Nixvim*
+
+If this setup caught your eye, consider dropping a ⭐
+
+</div>
