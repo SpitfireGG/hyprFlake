@@ -13,7 +13,7 @@
 
 <br>
 
-<img src="assets/cava.png" width="100%" alt="Hyprland Desktop — Cava Audio Visualizer">
+<img src="assets/home.png" width="100%" alt="Hyprland Desktop — Clear View">
 
 </div>
 
@@ -38,10 +38,17 @@ _Declaratively configured via [Nixvim](https://github.com/nix-community/nixvim) 
 <p align="center"><sub>File explorer · outline panel · saga symbols</sub></p>
 </td>
 </tr>
-</table>
-
-<img src="assets/nixvim_toggleterminal.png" width="100%" alt="Nixvim — ToggleTerm Floating Terminal">
+<tr>
+<td width="50%">
+<img src="assets/og.png" alt="Nixvim — Fuzzy Finder" width="100%">
+<p align="center"><sub>File searching · telescope / fzf</sub></p>
+</td>
+<td width="50%">
+<img src="assets/NIXVIMterminal.png" alt="Nixvim — Floating Terminal" width="100%">
 <p align="center"><sub>Nixvim + ToggleTerm — floating terminal overlay with transparency</sub></p>
+</td>
+</tr>
+</table>
 
 <br>
 
@@ -86,6 +93,12 @@ _Declaratively configured via [Nixvim](https://github.com/nix-community/nixvim) 
 <td width="50%">
 <img src="assets/zen.png" alt="Zen Browser — GitHub" width="100%">
 <p align="center"><sub>Zen Browser · minimal chrome · GitHub integration</sub></p>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<img src="assets/cava.png" width="100%" alt="Hyprland Desktop — Cava Audio Visualizer">
+<p align="center"><sub>Cava audio visualizer · smooth gradients</sub></p>
 </td>
 </tr>
 </table>
