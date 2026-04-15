@@ -9,7 +9,7 @@
 [![NixOS](https://img.shields.io/badge/NixOS-unstable-5277C3?style=for-the-badge&logo=nixos&logoColor=white)](https://nixos.org)
 [![Hyprland](https://img.shields.io/badge/Hyprland-WM-00C4B3?style=for-the-badge&logo=linux&logoColor=white)](https://hyprland.org)
 [![Nixvim](https://img.shields.io/badge/Nixvim-Editor-88C0D0?style=for-the-badge&logo=neovim&logoColor=white)](https://github.com/nix-community/nixvim)
-[![Stars](https://img.shields.io/github/stars/SpitfireGG/hyprFlake?style=for-the-badge&color=FAB387&logo=starship&logoColor=white)](https://github.com/SpitfireGG/hyprFlake)
+
 
 <br>
 
